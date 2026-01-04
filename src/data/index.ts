@@ -63,9 +63,9 @@ export const navItems = [
 
 export const projects = [
     {
-        title: 'Manga  Translator',
+        title: 'Visual language translation engine',
         description:
-            'Manga-Translator is an automated scanlation tool that streamlines manga translation using Computer Vision and NLP for text detection, inpainting, translation, and typesetting. It reduces release time while maintaining high accuracy and accessibility for global readers.',
+            'It is an automated scanlation tool that streamlines manga translation using Computer Vision and NLP for text detection, inpainting, translation, and typesetting. It reduces release time while maintaining high accuracy and accessibility for global readers.',
 
         tags: [
             "Python",
@@ -76,6 +76,23 @@ export const projects = [
             "Google / DeepL / OpenAI APIs"
         ],
         github: 'https://github.com/kshitij-singh06/Manga-Translator',
+        featured: true
+    },
+    {
+        title: 'Customer Intelligence System',
+        description:
+            'A production-ready machine learning system that predicts Customer Lifetime Value (CLV) and churn probability using transactional data. It combines regression, classification, and strategic segmentation to drive data-driven customer retention and revenue growth decisions.',
+
+        tags: [
+            "Python",
+    "Pandas & NumPy",
+    "scikit-learn",
+    "XGBoost & LightGBM",
+    "SHAP & Optuna",
+    "Streamlit",
+    "Docker"
+        ],
+        github: 'https://github.com/kshitij-singh06/Customer-Intelligence-System',
         featured: true
     },
     {
