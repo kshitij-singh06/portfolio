@@ -19,32 +19,37 @@ export const skillCategories = [
     {
         title: 'Languages',
         icon: Code2,
-        skills: ['Python', 'JavaScript', 'C++', 'C', 'SQL', 'HTML/CSS', 'R'],
+        skills: ['Python', 'C++', 'JavaScript', 'SQL', 'R'],
     },
     {
-        title: 'Frameworks & Libraries',
-        icon: Globe,
-        skills: ['React', 'Node.js', 'Express', 'Prisma ORM', 'TensorFlow', 'Keras', 'Streamlit'],
+        title: 'Machine Learning',
+        icon: Cpu,
+        skills: ['TensorFlow', 'Keras', 'PyTorch', 'scikit-learn', 'XGBoost', 'LightGBM', 'SHAP', 'Optuna'],
+    },
+    {
+        title: 'Deep Learning',
+        icon: Zap,
+        skills: ['CNNs', 'Transfer Learning', 'Model Optimization', 'Computer Vision', 'NLP'],
+    },
+    {
+        title: 'Data Science',
+        icon: BarChart3,
+        skills: ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Feature Engineering', 'A/B Testing'],
+    },
+    {
+        title: 'MLOps & Deployment',
+        icon: Server,
+        skills: ['Streamlit', 'FastAPI', 'Docker', 'Model Versioning', 'REST APIs'],
+    },
+    {
+        title: 'Frameworks & Tools',
+        icon: Settings,
+        skills: ['React', 'Node.js', 'Express', 'Git', 'Linux', 'AWS'],
     },
     {
         title: 'Databases',
         icon: Database,
-        skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Supabase'],
-    },
-    {
-        title: 'Developer Tools',
-        icon: Settings,
-        skills: ['Git', 'GitHub', 'Docker', 'Linux', 'AWS', 'VS Code'],
-    },
-    {
-        title: 'Data Analysis',
-        icon: BarChart3,
-        skills: ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'scikit-learn', 'Snowflake'],
-    },
-    {
-        title: 'Data Visualization',
-        icon: Server,
-        skills: ['Power BI', 'Tableau', 'Airbyte'],
+        skills: ['PostgreSQL', 'MongoDB', 'MySQL'],
     },
 ];
 
@@ -61,15 +66,15 @@ export const projects = [
         title: 'Manga  Translator',
         description:
             'Manga-Translator is an automated scanlation tool that streamlines manga translation using Computer Vision and NLP for text detection, inpainting, translation, and typesetting. It reduces release time while maintaining high accuracy and accessibility for global readers.',
-            
-        tags  : [
-    "Python",
-    "OpenCV",
-    "PyTorch",
-    "PaddleOCR / Tesseract OCR",
-    "Pillow (PIL)"," NumPy",
-    "Google / DeepL / OpenAI APIs"
-],
+
+        tags: [
+            "Python",
+            "OpenCV",
+            "PyTorch",
+            "PaddleOCR / Tesseract OCR",
+            "Pillow (PIL)", " NumPy",
+            "Google / DeepL / OpenAI APIs"
+        ],
         github: 'https://github.com/kshitij-singh06/Manga-Translator',
         featured: true
     },
@@ -81,7 +86,7 @@ export const projects = [
         github: 'https://github.com/kshitij-singh06/E-commerce',
         featured: true
     },
-   
+
     {
         title: 'Handwritten Digit Recognition',
         description:
@@ -91,7 +96,7 @@ export const projects = [
         liveDemo: 'https://kshitij-singh06-digit-predictor-app-j62rol.streamlit.app/',
         featured: true
     },
-     {
+    {
         title: 'Secure Data Wiping & Verification System',
         description:
             'Cross-platform desktop app using Python and Tkinter for secure drive erasure with DoD-compliant multi-pass algorithms and cryptographic certificates. Includes React/Node.js web portal with Supabase authentication.',
