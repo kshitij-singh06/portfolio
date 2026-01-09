@@ -5,6 +5,8 @@ import { Mail, MapPin, Github, Linkedin, Send, Loader2, CheckCircle2 } from 'luc
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
+import { socialLinks, personalInfo } from '../data';
+
 export default function Contact() {
   const [ref, isInView] = useInView({ threshold: 0.2 });
   const formRef = useRef<HTMLFormElement>(null);
@@ -69,7 +71,7 @@ export default function Contact() {
 
               <div className="space-y-4">
                 <a
-                  href="mailto:kshitij.tech06@gmail.com"
+                  href={`mailto:${personalInfo.email}`}
                   className="flex items-center gap-4 p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl hover:border-cyan-500/50 transition-all duration-300 group backdrop-blur-sm"
                 >
                   <div className="p-3 bg-zinc-800 border border-zinc-700 rounded-lg group-hover:bg-cyan-500/20 group-hover:border-cyan-500/50 transition-colors">
@@ -78,7 +80,7 @@ export default function Contact() {
                   <div>
                     <p className="text-sm text-zinc-500">Email</p>
                     <p className="text-white font-medium group-hover:text-cyan-400 transition-colors">
-                      kshitij.tech06@gmail.com
+                      {personalInfo.email}
                     </p>
                   </div>
                 </a>
@@ -90,7 +92,7 @@ export default function Contact() {
                   <div>
                     <p className="text-sm text-zinc-500">Location</p>
                     <p className="text-white font-medium">
-                      Bengaluru, Karnataka
+                      {personalInfo.location}
                     </p>
                   </div>
                 </div>
@@ -101,22 +103,22 @@ export default function Contact() {
                   Find me online
                 </p>
                 <div className="flex gap-3">
-                  <a
-                    href="https://github.com/kshitij-singh06"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-zinc-800 border border-zinc-700 rounded-lg hover:bg-cyan-500/20 hover:border-cyan-500/50 group transition-all"
-                  >
-                    <Github className="w-5 h-5 text-zinc-400 group-hover:text-cyan-400 transition-colors" />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/kshitij-singh06"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-zinc-800 border border-zinc-700 rounded-lg hover:bg-cyan-500/20 hover:border-cyan-500/50 group transition-all"
-                  >
-                    <Linkedin className="w-5 h-5 text-zinc-400 group-hover:text-cyan-400 transition-colors" />
-                  </a>
+                  {socialLinks.map((link, index) => {
+                    const Icon = link.Icon;
+                    if (link.label === "Email") return null;
+                    return (
+                      <a
+                        key={index}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-zinc-800 border border-zinc-700 rounded-lg hover:bg-cyan-500/20 hover:border-cyan-500/50 group transition-all"
+                        aria-label={link.label}
+                      >
+                        <Icon className="w-5 h-5 text-zinc-400 group-hover:text-cyan-400 transition-colors" />
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </div>
