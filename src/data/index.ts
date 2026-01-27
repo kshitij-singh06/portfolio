@@ -90,9 +90,9 @@ export const projects = [
     "XGBoost & LightGBM",
     "SHAP & Optuna",
     "Streamlit",
-    "Docker"
         ],
         github: 'https://github.com/kshitij-singh06/Customer-Intelligence-System',
+        liveDemo: 'https://customer-intelligence-system.streamlit.app',
         featured: true
     },
     {

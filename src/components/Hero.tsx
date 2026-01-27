@@ -80,7 +80,7 @@ export default function Hero() {
                 alt={personalInfo.name}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale hover:grayscale-0"
                 onError={(e) => {
-                  e.currentTarget.src = 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400';
+                  e.currentTarget.src = 'https://placehold.co/600x400';
                 }}
               />
             </div>
