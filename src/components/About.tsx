@@ -150,28 +150,6 @@ export default function About() {
           </p>
         </div>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-          {[
-            { number: '10+', label: 'Projects Completed' },
-            { number: '5+', label: 'Technologies Mastered' },
-            { number: '2+', label: 'Years Experience' },
-            { number: '∞', label: 'Lines of Code' },
-          ].map((stat, index) => (
-            <div
-              key={index}
-              className="group relative p-6 bg-zinc-900/50 border border-zinc-800 rounded-2xl text-center hover:border-zinc-700 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-violet-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative z-10">
-                <div className="text-4xl font-bold text-white mb-2 bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-                  {stat.number}
-                </div>
-                <div className="text-zinc-400 text-sm">{stat.label}</div>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );
