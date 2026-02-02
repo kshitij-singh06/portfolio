@@ -1,9 +1,22 @@
-import { motion } from 'framer-motion';
+import { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '@/components/ui/button';
 import { Download, Mail, Zap } from 'lucide-react';
 import { personalInfo, floatingIcons, socialLinks } from '../data';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const profileRef = useRef<HTMLDivElement>(null);
+  const subtitleRef = useRef<HTMLSpanElement>(null);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
+  const socialsRef = useRef<HTMLDivElement>(null);
+  const floatingIconsRef = useRef<HTMLDivElement>(null);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -11,9 +24,114 @@ export default function Hero() {
     }
   };
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Initial setup - hide elements
+      gsap.set([headingRef.current, subtitleRef.current, descriptionRef.current, buttonsRef.current, socialsRef.current], {
+        opacity: 0,
+        y: 100,
+      });
+      gsap.set(profileRef.current, { opacity: 0, scale: 0.5 });
+
+      // Master timeline for hero entrance
+      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
+      // Profile picture entrance (no rotation)
+      tl.to(profileRef.current, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.8,
+        ease: 'power3.out',
+      })
+        .to(headingRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power4.out',
+        }, '-=0.4')
+        .to(subtitleRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+        }, '-=0.4')
+        .to(descriptionRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+        }, '-=0.4')
+        .to(buttonsRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+        }, '-=0.3')
+        .to(socialsRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+        }, '-=0.2');
+
+      // Floating icons animation
+      if (floatingIconsRef.current) {
+        const icons = floatingIconsRef.current.querySelectorAll('.floating-icon');
+        icons.forEach((icon, i) => {
+          gsap.to(icon, {
+            y: 'random(-30, 30)',
+            x: 'random(-20, 20)',
+            rotation: 'random(-15, 15)',
+            duration: 'random(3, 5)',
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut',
+            delay: i * 0.2,
+          });
+        });
+      }
+
+      // Parallax effect on scroll
+      gsap.to(sectionRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        },
+        y: 200,
+        opacity: 0.3,
+      });
+
+      // Text character animation for heading
+      if (headingRef.current) {
+        const chars = headingRef.current.textContent?.split('') || [];
+        headingRef.current.innerHTML = chars
+          .map((char, i) =>
+            `<span class="char" style="display: inline-block; animation-delay: ${i * 0.03}s">${char === ' ' ? '&nbsp;' : char}</span>`
+          )
+          .join('');
+
+        const charElements = headingRef.current.querySelectorAll('.char');
+        gsap.fromTo(charElements,
+          { y: 100, opacity: 0, rotateX: -90 },
+          {
+            y: 0,
+            opacity: 1,
+            rotateX: 0,
+            duration: 0.8,
+            stagger: 0.03,
+            ease: 'back.out(1.7)',
+            delay: 0.5,
+          }
+        );
+      }
+
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
       id="hero"
+      ref={sectionRef}
       className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 relative overflow-hidden bg-black"
     >
       {/* Dynamic Gradient Background */}
@@ -22,54 +140,34 @@ export default function Hero() {
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
 
-      {/* Abstract Glows */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl"
-      />
+      {/* Animated Glows */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[100px] animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+      </div>
 
       {/* Floating Icons */}
-      {floatingIcons.map((item, index) => (
-        <motion.div
-          key={index}
-          className="absolute hidden lg:block opacity-20"
-          initial={{ y: 0 }}
-          animate={{ y: [0, -20, 0] }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: item.delay
-          }}
-          style={{
-            top: item.top,
-            left: item.left,
-            right: item.right,
-            bottom: item.bottom,
-          }}
-        >
-          <item.Icon size={item.size} className="text-white" />
-        </motion.div>
-      ))}
+      <div ref={floatingIconsRef} className="absolute inset-0 pointer-events-none">
+        {floatingIcons.map((item, index) => (
+          <div
+            key={index}
+            className="floating-icon absolute hidden lg:block opacity-20"
+            style={{
+              top: item.top,
+              left: item.left,
+              right: item.right,
+              bottom: item.bottom,
+            }}
+          >
+            <item.Icon size={item.size} className="text-white" />
+          </div>
+        ))}
+      </div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        {/* Profile Picture */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
+        {/* Profile Picture - Always colorful, no rotation */}
+        <div
+          ref={profileRef}
           className="mb-8 flex justify-center"
         >
           <div className="relative group cursor-pointer">
@@ -78,51 +176,40 @@ export default function Hero() {
               <img
                 src="/profile.jpg"
                 alt={personalInfo.name}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale hover:grayscale-0"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 onError={(e) => {
                   e.currentTarget.src = 'https://placehold.co/600x400';
                 }}
               />
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Text Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+        <h1
+          ref={headingRef}
+          className="text-5xl sm:text-6xl lg:text-7xl font-bold font-heading text-white mb-6 tracking-tight"
         >
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold font-heading text-white mb-6 tracking-tight">
-            {personalInfo.name}
-          </h1>
-        </motion.div>
+          {personalInfo.name}
+        </h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mb-8"
+        <span
+          ref={subtitleRef}
+          className="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-zinc-300 text-sm sm:text-base font-medium backdrop-blur-sm mb-8"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-zinc-300 text-sm sm:text-base font-medium backdrop-blur-sm">
-            {personalInfo.title}
-          </span>
-        </motion.div>
+          {personalInfo.title}
+        </span>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+        <p
+          ref={descriptionRef}
           className="text-lg sm:text-xl text-zinc-400 mb-10 max-w-2xl mx-auto leading-relaxed"
         >
           {personalInfo.description}
-        </motion.p>
+        </p>
 
         {/* Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+        <div
+          ref={buttonsRef}
           className="flex flex-wrap items-center justify-center gap-4 mb-12"
         >
           <Button
@@ -152,29 +239,32 @@ export default function Hero() {
             <Mail className="w-5 h-5 mr-2" />
             Contact
           </Button>
-        </motion.div>
+        </div>
 
         {/* Social Links */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+        <div
+          ref={socialsRef}
           className="flex items-center justify-center gap-4"
         >
           {socialLinks.map((social, index) => (
-            <motion.a
+            <a
               key={index}
               href={social.href}
               target={social.href.startsWith('mailto') ? undefined : '_blank'}
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-white/20 transition-colors"
+              className="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
             >
-              <social.Icon className="w-5 h-5 text-zinc-400 group-hover:text-white transition-colors" />
-            </motion.a>
+              <social.Icon className="w-5 h-5 text-zinc-400 hover:text-white transition-colors" />
+            </a>
           ))}
-        </motion.div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center">
+          <div className="w-1 h-2 bg-white/50 rounded-full mt-2 animate-bounce"></div>
+        </div>
       </div>
     </section>
   );

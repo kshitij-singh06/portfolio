@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Code, Cpu, Database, Zap, Code2, Server, Settings, BarChart3, Globe } from 'lucide-react';
+import { Github, Linkedin, Mail, Code, Cpu, Database, Zap, Code2, Server, Settings, BarChart3 } from 'lucide-react';
 
 export const personalInfo = {
     name: "Kshitij Singh",
@@ -85,11 +85,11 @@ export const projects = [
 
         tags: [
             "Python",
-    "Pandas & NumPy",
-    "scikit-learn",
-    "XGBoost & LightGBM",
-    "SHAP & Optuna",
-    "Streamlit",
+            "Pandas & NumPy",
+            "scikit-learn",
+            "XGBoost & LightGBM",
+            "SHAP & Optuna",
+            "Streamlit",
         ],
         github: 'https://github.com/kshitij-singh06/Customer-Intelligence-System',
         liveDemo: 'https://customer-intelligence-system.streamlit.app',
