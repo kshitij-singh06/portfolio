@@ -376,14 +376,9 @@
   .snap-start {
     scroll-snap-align: start;
   }
-
-  /* Hide default cursor on desktop */
-  @media (min-width: 1024px) {
-    .cursor-none, .cursor-none * {
-      cursor: none !important;
-    }
-  }
 }
+
+
 
 html {
   scroll-behavior: smooth;

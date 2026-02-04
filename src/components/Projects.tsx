@@ -29,11 +29,6 @@ export default function Projects() {
             scrollTrigger: { trigger: card, start: 'top 90%', toggleActions: 'play none none reverse' },
           });
 
-          gsap.to(card, {
-            y: i % 2 === 0 ? -30 : 30,
-            scrollTrigger: { trigger: sectionRef.current, start: 'top bottom', end: 'bottom top', scrub: 1 },
-          });
-
           const el = card as HTMLElement;
           el.addEventListener('mousemove', (e: MouseEvent) => {
             const rect = el.getBoundingClientRect();
@@ -63,7 +58,7 @@ export default function Projects() {
 
         <div ref={cardsRef} className="grid md:grid-cols-2 gap-8" style={{ perspective: '1000px' }}>
           {projects.map((project, index) => (
-            <Card key={index} className="project-card group h-full bg-zinc-900/50 border-zinc-800 hover:border-zinc-600 transition-all duration-500 overflow-hidden backdrop-blur-sm relative" style={{ transformStyle: 'preserve-3d' }}>
+            <Card key={index} className="project-card group h-full bg-zinc-900/50 border-zinc-800 hover:border-zinc-600 transition-all duration-500 overflow-hidden relative" style={{ transformStyle: 'preserve-3d' }}>
               <div className="h-1 w-0 group-hover:w-full bg-gradient-to-r from-cyan-500 to-violet-500 transition-all duration-500"></div>
               <CardHeader className="pb-3">
                 <div className="flex items-start justify-between">

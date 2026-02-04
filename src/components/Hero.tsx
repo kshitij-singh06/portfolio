@@ -1,14 +1,11 @@
 import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '@/components/ui/button';
 import { Download, Mail, Zap } from 'lucide-react';
 import { personalInfo, floatingIcons, socialLinks } from '../data';
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
   const subtitleRef = useRef<HTMLSpanElement>(null);
@@ -87,17 +84,6 @@ export default function Hero() {
         });
       }
 
-      // Parallax effect on scroll
-      gsap.to(sectionRef.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1,
-        },
-        y: 200,
-        opacity: 0.3,
-      });
 
       // Text character animation for heading
       if (headingRef.current) {
@@ -123,7 +109,7 @@ export default function Hero() {
         );
       }
 
-    }, sectionRef);
+    }, containerRef);
 
     return () => ctx.revert();
   }, []);
@@ -131,7 +117,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      ref={sectionRef}
+      ref={containerRef}
       className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 relative overflow-hidden bg-black"
     >
       {/* Dynamic Gradient Background */}
@@ -257,13 +243,6 @@ export default function Hero() {
               <social.Icon className="w-5 h-5 text-zinc-400 hover:text-white transition-colors" />
             </a>
           ))}
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center">
-          <div className="w-1 h-2 bg-white/50 rounded-full mt-2 animate-bounce"></div>
         </div>
       </div>
     </section>
