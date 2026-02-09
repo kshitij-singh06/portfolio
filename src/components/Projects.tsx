@@ -58,7 +58,7 @@ export default function Projects() {
 
         <div ref={cardsRef} className="grid md:grid-cols-2 gap-8" style={{ perspective: '1000px' }}>
           {projects.map((project, index) => (
-            <Card key={index} className="project-card group h-full bg-zinc-900/50 border-zinc-800 hover:border-zinc-600 transition-all duration-500 overflow-hidden relative" style={{ transformStyle: 'preserve-3d' }}>
+            <Card key={index} className="project-card group h-full flex flex-col bg-zinc-900/50 border-zinc-800 hover:border-zinc-600 transition-all duration-500 overflow-hidden relative" style={{ transformStyle: 'preserve-3d' }}>
               <div className="h-1 w-0 group-hover:w-full bg-gradient-to-r from-cyan-500 to-violet-500 transition-all duration-500"></div>
               <CardHeader className="pb-3">
                 <div className="flex items-start justify-between">
@@ -67,13 +67,13 @@ export default function Projects() {
                 </div>
                 <CardDescription className="text-zinc-400 min-h-[80px] mt-2">{project.description}</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex-1 flex flex-col">
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag) => (
                     <Badge key={tag} variant="outline" className="border-zinc-800 text-zinc-400 hover:border-cyan-500/50 hover:text-cyan-400 transition-all">{tag}</Badge>
                   ))}
                 </div>
-                <div className="flex gap-3">
+                <div className="flex gap-3 mt-auto">
                   <Button variant="outline" size="sm" asChild className="flex-1 bg-zinc-900 border-zinc-700 text-zinc-300 hover:bg-white hover:text-black transition-all">
                     <a href={project.github} target="_blank" rel="noopener noreferrer"><Github className="w-4 h-4 mr-2" />Code</a>
                   </Button>

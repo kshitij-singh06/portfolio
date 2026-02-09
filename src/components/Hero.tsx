@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
 import { Download, Mail, Zap } from 'lucide-react';
@@ -13,6 +13,10 @@ export default function Hero() {
   const buttonsRef = useRef<HTMLDivElement>(null);
   const socialsRef = useRef<HTMLDivElement>(null);
   const floatingIconsRef = useRef<HTMLDivElement>(null);
+
+  // Typewriter effect state
+  const [displayedTitle, setDisplayedTitle] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -114,6 +118,36 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
+  // Typewriter effect
+  useEffect(() => {
+    const title = personalInfo.title;
+    let currentIndex = 0;
+
+    // Start typing after a delay (after other animations)
+    const startDelay = setTimeout(() => {
+      const typingInterval = setInterval(() => {
+        if (currentIndex <= title.length) {
+          setDisplayedTitle(title.slice(0, currentIndex));
+          currentIndex++;
+        } else {
+          clearInterval(typingInterval);
+        }
+      }, 80); // Speed of typing
+
+      return () => clearInterval(typingInterval);
+    }, 1500); // Delay before starting
+
+    // Cursor blink effect
+    const cursorInterval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 530);
+
+    return () => {
+      clearTimeout(startDelay);
+      clearInterval(cursorInterval);
+    };
+  }, []);
+
   return (
     <section
       id="hero"
@@ -137,7 +171,7 @@ export default function Hero() {
         {floatingIcons.map((item, index) => (
           <div
             key={index}
-            className="floating-icon absolute hidden lg:block opacity-20"
+            className="floating-icon absolute hidden lg:block opacity-30"
             style={{
               top: item.top,
               left: item.left,
@@ -145,7 +179,10 @@ export default function Hero() {
               bottom: item.bottom,
             }}
           >
-            <item.Icon size={item.size} className="text-white" />
+            <item.Icon
+              size={item.size}
+              className={index % 2 === 0 ? "text-cyan-400" : "text-violet-400"}
+            />
           </div>
         ))}
       </div>
@@ -181,9 +218,12 @@ export default function Hero() {
 
         <span
           ref={subtitleRef}
-          className="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-zinc-300 text-sm sm:text-base font-medium backdrop-blur-sm mb-8"
+          className="inline-flex items-center px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-zinc-300 text-sm sm:text-base font-medium backdrop-blur-sm mb-8 min-w-[200px] justify-center"
         >
-          {personalInfo.title}
+          {displayedTitle}
+          <span
+            className={`ml-0.5 w-0.5 h-5 bg-cyan-400 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`}
+          />
         </span>
 
         <p
