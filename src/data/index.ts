@@ -1,4 +1,5 @@
 import { Github, Linkedin, Mail, Code, Cpu, Database, Zap, Server, Settings, Code2, BarChart3, GitBranch, Cloud, Terminal, Atom } from 'lucide-react';
+import { title } from 'node:process';
 
 export const personalInfo = {
     name: "Kshitij Singh",
@@ -63,6 +64,15 @@ export const navItems = [
 
 export const projects = [
     {
+        title: 'IntelX – Cybersecurity Intelligence Platform',
+        description:
+            'Unified OSINT platform with 5 integrated security tools — Web Analysis, Malware Forensics, Recon, Steganography Detection, and URL Tracing — for rapid attack surface discovery. Features a Dockerized Python REST API backend integrating VirusTotal, DNS lookups, and breach data analysis, with a responsive React frontend built using Tailwind CSS, Framer Motion animations, and glassmorphism UI.',
+        tags: ['React', 'Python', 'Docker', 'Tailwind CSS', 'Vite', 'Framer Motion'],
+        github: 'https://github.com/kshitij-singh06/intelx-frontend',
+        featured: true,
+        liveDemo: 'https://intelx1337.vercel.app/'
+    },
+    {
         title: 'Visual language translation engine',
         description:
             'It is an automated scanlation tool that streamlines manga translation using Computer Vision and NLP for text detection, inpainting, translation, and typesetting. It reduces release time while maintaining high accuracy and accessibility for global readers.',
@@ -79,6 +89,15 @@ export const projects = [
         featured: true
     },
     {
+        title: 'Full-Stack E-Commerce Platform',
+        description:
+            'A comprehensive e-commerce application with Node.js, Express, PostgreSQL, and Prisma ORM. Features JWT authentication, role-based authorization, product CRUD, dynamic cart updates, and admin dashboard with Multer image uploads.',
+        tags: ['Node.js', 'Express', 'PostgreSQL', 'React', 'Prisma'],
+        github: 'https://github.com/kshitij-singh06/E-commerce',
+        liveDemo: 'https://e-commerce-woad-tau.vercel.app/',
+        featured: true
+    },
+    {
         title: 'Secure Data Wiping & Verification System',
         description:
             'Cross-platform desktop app using Python and Tkinter for secure drive erasure with DoD-compliant multi-pass algorithms and cryptographic certificates. Includes React/Node.js web portal with Supabase authentication.',
@@ -88,14 +107,7 @@ export const projects = [
         featured: true
     },
 
-    {
-        title: 'Full-Stack E-Commerce Platform',
-        description:
-            'A comprehensive e-commerce application with Node.js, Express, PostgreSQL, and Prisma ORM. Features JWT authentication, role-based authorization, product CRUD, dynamic cart updates, and admin dashboard with Multer image uploads.',
-        tags: ['Node.js', 'Express', 'PostgreSQL', 'React', 'Prisma'],
-        github: 'https://github.com/kshitij-singh06/E-commerce',
-        featured: true
-    },
+
     {
         title: 'Customer Intelligence System',
         description:
