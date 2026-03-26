@@ -95,7 +95,7 @@ export default function About() {
     return () => ctx.revert();
   }, []);
 
-  const marqueeText = "Creative Developer • Full Stack Engineer • Problem Solver • UI/UX Enthusiast • ";
+  const marqueeText = "Full Stack Developer • Data Science • Cybersecurity • Machine Learning • Problem Solver";
 
   return (
     <section
@@ -134,19 +134,21 @@ export default function About() {
 
         <div ref={paragraphsRef} className="max-w-3xl mx-auto text-center space-y-8">
           <p className="text-xl text-zinc-300 leading-relaxed">
-            I'm a <span className="text-cyan-400 font-semibold">Computer Science and Engineering</span> student at Dayananda Sagar College of Engineering,
-            Bengaluru, specializing in Data Science. Currently in my undergraduate journey (2023-2027),
-            I'm passionate about building <span className="text-violet-400 font-semibold">full-stack web applications</span> and exploring machine learning.
+            I'm a <span className="text-cyan-400 font-semibold">Computer Science & Engineering</span> student
+            at Dayananda Sagar College of Engineering, Bengaluru, specializing in <span className="text-violet-400 font-semibold">Data Science</span>.
+            Currently on my undergraduate journey (2023–2027), I'm passionate about building things
+            at the intersection of full-stack development, machine learning, and cybersecurity.
           </p>
           <p className="text-xl text-zinc-300 leading-relaxed">
-            My work spans from developing secure enterprise solutions like data wiping systems with
-            <span className="text-cyan-400 font-semibold"> DoD-compliant algorithms</span>, to creating interactive ML applications with TensorFlow and Streamlit.
-            I enjoy working with modern tech stacks including <span className="text-violet-400 font-semibold">React, Node.js, PostgreSQL, and Python</span>.
+            I enjoy turning complex problems into clean, scalable solutions, whether that's
+            architecting <span className="text-cyan-400 font-semibold">backend systems and APIs</span>, crafting
+            polished frontends, or training and deploying <span className="text-violet-400 font-semibold">machine learning models</span>.
+            I'm comfortable across the full stack and always looking to push the boundaries of what I can build.
           </p>
           <p className="text-xl text-zinc-300 leading-relaxed">
-            When I'm not coding, you'll find me diving into new technologies, working on personal projects,
-            or exploring the intersection of <span className="text-cyan-400 font-semibold">data science and web development</span>. I'm always excited to
-            collaborate on challenging projects that make a real impact.
+            Outside of coding, I dive into <span className="text-cyan-400 font-semibold">Capture The Flag</span> competitions,
+            explore new technologies, and tinker with side projects. I thrive on hard problems
+            and love collaborating on work that makes a <span className="text-violet-400 font-semibold">real-world impact</span>.
           </p>
         </div>
 

@@ -3,10 +3,11 @@ import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
 import { Download, Mail, Zap } from 'lucide-react';
 import { personalInfo, floatingIcons, socialLinks } from '../data';
+import { DottedSurface } from './DottedSurface';
+import { ParticleName } from './ParticleName';
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
   const subtitleRef = useRef<HTMLSpanElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
@@ -28,7 +29,7 @@ export default function Hero() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Initial setup - hide elements
-      gsap.set([headingRef.current, subtitleRef.current, descriptionRef.current, buttonsRef.current, socialsRef.current], {
+      gsap.set([subtitleRef.current, descriptionRef.current, buttonsRef.current, socialsRef.current], {
         opacity: 0,
         y: 100,
       });
@@ -44,17 +45,11 @@ export default function Hero() {
         duration: 0.8,
         ease: 'power3.out',
       })
-        .to(headingRef.current, {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: 'power4.out',
-        }, '-=0.4')
         .to(subtitleRef.current, {
           opacity: 1,
           y: 0,
           duration: 0.8,
-        }, '-=0.4')
+        }, '-=0.2')
         .to(descriptionRef.current, {
           opacity: 1,
           y: 0,
@@ -89,29 +84,7 @@ export default function Hero() {
       }
 
 
-      // Text character animation for heading
-      if (headingRef.current) {
-        const chars = headingRef.current.textContent?.split('') || [];
-        headingRef.current.innerHTML = chars
-          .map((char, i) =>
-            `<span class="char" style="display: inline-block; animation-delay: ${i * 0.03}s">${char === ' ' ? '&nbsp;' : char}</span>`
-          )
-          .join('');
-
-        const charElements = headingRef.current.querySelectorAll('.char');
-        gsap.fromTo(charElements,
-          { y: 100, opacity: 0, rotateX: -90 },
-          {
-            y: 0,
-            opacity: 1,
-            rotateX: 0,
-            duration: 0.8,
-            stagger: 0.03,
-            ease: 'back.out(1.7)',
-            delay: 0.5,
-          }
-        );
-      }
+      // Text character animation for heading removed as ParticleName handles its own reveal
 
     }, containerRef);
 
@@ -154,11 +127,14 @@ export default function Hero() {
       ref={containerRef}
       className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 relative overflow-hidden bg-black"
     >
-      {/* Dynamic Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-zinc-950 via-black to-zinc-950"></div>
+      {/* Dotted wave surface — behind everything */}
+      <DottedSurface />
+
+      {/* Dynamic Gradient Background — semi-transparent so dots show through */}
+      <div className="absolute inset-0 bg-gradient-to-br from-zinc-950/60 via-black/50 to-zinc-950/60"></div>
 
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
 
       {/* Animated Glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -208,13 +184,10 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Text Content */}
-        <h1
-          ref={headingRef}
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold font-heading text-white mb-6 tracking-tight"
-        >
-          {personalInfo.name}
-        </h1>
+        {/* Text Content - Reveal via Particles */}
+        <div className="mb-6">
+          <ParticleName />
+        </div>
 
         <span
           ref={subtitleRef}

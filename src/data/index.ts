@@ -1,5 +1,4 @@
-import { Github, Linkedin, Mail, Code, Cpu, Database, Zap, Server, Settings, Code2, BarChart3, GitBranch, Cloud, Terminal, Atom } from 'lucide-react';
-import { title } from 'node:process';
+import { Github, Linkedin, Mail, Code, Cpu, Database, Server, Settings, Code2, BarChart3, GitBranch, Cloud, Terminal, Atom } from 'lucide-react';
 
 export const personalInfo = {
     name: "Kshitij Singh",
@@ -86,6 +85,15 @@ export const projects = [
             "Google / DeepL / OpenAI APIs"
         ],
         github: 'https://github.com/kshitij-singh06/Manga-Translator',
+        featured: true
+    },
+    {
+        title: 'NetScope – Deep Packet Inspection',
+        description:
+            'Developed a high-performance multi-threaded packet inspection engine in C++ to capture and analyze live network traffic and large PCAP traffic streams, extracting application layer signals such as TLS SNI, HTTP host metadata, and DNS query patterns. Designed a scalable flow-aware processing architecture using load-balanced worker threads and thread-safe queues.',
+        tags: ['C++', 'JavaScript',  'Multithreading', 'Network Security'],
+        github: 'https://github.com/kshitij-singh06/NetScope',
+        liveDemo:'https://kshitij-singh06.github.io/NetScope',
         featured: true
     },
     {
