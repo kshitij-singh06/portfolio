@@ -61,26 +61,25 @@ export default function Skills() {
     <section
       id="skills"
       ref={sectionRef}
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden"
     >
       {/* Radial gradient background — same as Projects */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.06),transparent_60%)]" />
 
-      {/* Subtle grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_60%,transparent_100%)]" />
+
 
       <div className="max-w-6xl mx-auto relative z-10">
 
         {/* Section heading — same style as About & Projects */}
         <div ref={headingRef} className="text-center mb-16">
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6">
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-6">
             Technical{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-400">
               Skills
             </span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-violet-500 mx-auto mb-6" />
-          <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Technologies and tools I use to bring ideas to life
           </p>
         </div>
@@ -95,18 +94,18 @@ export default function Skills() {
             return (
               <div
                 key={category.title}
-                className="skill-card group relative bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 overflow-hidden transition-all duration-500 hover:border-zinc-600 hover:-translate-y-1"
+                className="skill-card group relative bg-card border border-border rounded-xl p-6 overflow-hidden transition-all duration-500 hover:border-primary/20 hover:-translate-y-1"
               >
                 {/* Top accent line on hover — same as Projects cards */}
                 <div className="absolute top-0 left-0 h-0.5 w-0 group-hover:w-full bg-gradient-to-r from-cyan-500 to-violet-500 transition-all duration-500" />
 
                 {/* Icon */}
-                <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-zinc-800/80 border border-zinc-700 mb-4 group-hover:border-cyan-500/40 transition-colors duration-300">
-                  <Icon className="w-5 h-5 text-zinc-400 group-hover:text-cyan-400 transition-colors duration-300" />
+                <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-muted border border-border mb-4 group-hover:border-cyan-500/40 transition-colors duration-300">
+                  <Icon className="w-5 h-5 text-muted-foreground group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors duration-300" />
                 </div>
 
                 {/* Category title */}
-                <h3 className="text-lg font-semibold text-white mb-4 group-hover:text-cyan-400 transition-colors duration-300">
+                <h3 className="text-lg font-semibold text-foreground mb-4 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors duration-300">
                   {category.title}
                 </h3>
 
@@ -116,7 +115,7 @@ export default function Skills() {
                     <Badge
                       key={skill}
                       variant="outline"
-                      className="border-zinc-800 text-zinc-400 hover:border-cyan-500/50 hover:text-cyan-400 transition-all cursor-default"
+                      className="border-border text-muted-foreground hover:border-cyan-500/50 hover:text-cyan-500 dark:hover:text-cyan-400 transition-all cursor-default"
                     >
                       {skill}
                     </Badge>

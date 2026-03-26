@@ -40,13 +40,17 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
     const positions: number[] = [];
     const colors: number[] = [];
 
+    // Detect theme: dark mode uses vivid cyan, light mode uses deeper teal
+    const isDark = document.documentElement.classList.contains('dark');
+    // dark: rgb(34,211,238) cyan-400 · light: rgb(14,165,233) sky-500 – more visible on white
+    const [dr, dg, db] = isDark ? [0.13, 0.83, 0.93] : [0.05, 0.65, 0.91];
+
     for (let ix = 0; ix < AMOUNTX; ix++) {
       for (let iy = 0; iy < AMOUNTY; iy++) {
         const x = ix * SEPARATION - (AMOUNTX * SEPARATION) / 2;
         const z = iy * SEPARATION - (AMOUNTY * SEPARATION) / 2;
         positions.push(x, 0, z);
-        // Cyan-tinted dots matching the site palette
-        colors.push(0.3, 0.72, 0.84);
+        colors.push(dr, dg, db);
       }
     }
 
@@ -57,7 +61,7 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
       size: 7,
       vertexColors: true,
       transparent: true,
-      opacity: 0.55,
+      opacity: isDark ? 0.55 : 0.35,
       sizeAttenuation: true,
     });
 

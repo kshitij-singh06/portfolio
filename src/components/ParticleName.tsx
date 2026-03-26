@@ -132,6 +132,13 @@ export function ParticleName() {
     const imageData = offscreenCtx.getImageData(0, 0, canvas.width, canvas.height)
     const pixels = imageData.data
 
+    // Detect theme: particles need a visible start color in light mode
+    const isDark = document.documentElement.classList.contains('dark')
+    // dark → white (#fff), light → vivid sky-blue (#0ea5e9) so particles show up
+    const spawnColor = isDark
+      ? { r: 255, g: 255, b: 255 }
+      : { r: 14, g: 165, b: 233 }
+
     const particles = particlesRef.current
     let particleIndex = 0
 
@@ -172,6 +179,9 @@ export function ParticleName() {
           particle.colorBlendRate = Math.random() * 0.04 + 0.04
           particles.push(particle)
         }
+
+        // Set theme-aware spawn color
+        particle.startColor = { ...spawnColor }
 
         // Gradient coloring: cyan to violet
         const progress = x / canvas.width

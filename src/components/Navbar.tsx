@@ -1,10 +1,12 @@
-import { Menu, X, Home, User, Zap, FolderOpen, Mail } from 'lucide-react';
+import { Menu, X, Home, User, Zap, FolderOpen, Mail, Sun, Moon } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { navItems } from '../data';
 import type { LucideIcon } from 'lucide-react';
 
 interface NavbarProps {
   scrolled: boolean;
+  theme: 'light' | 'dark';
+  toggleTheme: () => void;
 }
 
 // Map section IDs to icons
@@ -16,7 +18,7 @@ const sectionIcons: Record<string, LucideIcon> = {
   contact: Mail,
 };
 
-export default function Navbar({ scrolled }: NavbarProps) {
+export default function Navbar({ scrolled, theme, toggleTheme }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [mobileVisible, setMobileVisible] = useState(false);
@@ -64,8 +66,10 @@ export default function Navbar({ scrolled }: NavbarProps) {
         }`}
       >
         <div className="max-w-7xl mx-auto px-5">
-          <div className="flex items-center justify-between h-14">
-            <div /> {/* Spacer for logo area */}
+          <div className="flex items-center justify-between h-16">
+            <div className="text-xl font-bold font-heading bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+              PORTFOLIO
+            </div>
 
             {/* Desktop links */}
             <div className="hidden md:flex items-center gap-1">
@@ -76,11 +80,11 @@ export default function Navbar({ scrolled }: NavbarProps) {
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className={`relative flex items-center gap-2 px-4 py-1.5 text-sm font-medium rounded-lg transition-all duration-200
-                      ${isActive ? 'text-white' : 'text-zinc-400 hover:text-zinc-200'}`}
+                    className={`relative flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200
+                      ${isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
                   >
                     {isActive && (
-                      <span className="absolute inset-0 rounded-lg bg-white/10 border border-white/10" />
+                      <span className="absolute inset-0 rounded-lg bg-primary/5 border border-primary/10" />
                     )}
                     {Icon && <Icon size={14} className="relative shrink-0" />}
                     <span className="relative">{item.label}</span>
@@ -90,18 +94,36 @@ export default function Navbar({ scrolled }: NavbarProps) {
                   </button>
                 );
               })}
+
+              <div className="w-px h-6 bg-border mx-2" />
+
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
+                aria-label="Toggle theme"
+              >
+                {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+              </button>
             </div>
 
             {/* Mobile hamburger */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800"
-            >
-              <div className="relative w-5 h-5">
-                <Menu size={20} className={`absolute inset-0 transition-all duration-200 ${mobileMenuOpen ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'}`} />
-                <X size={20} className={`absolute inset-0 transition-all duration-200 ${mobileMenuOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'}`} />
-              </div>
-            </button>
+            <div className="flex items-center gap-2 md:hidden">
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
+              >
+                {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+              </button>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-secondary"
+              >
+                <div className="relative w-5 h-5">
+                  <Menu size={20} className={`absolute inset-0 transition-all duration-200 ${mobileMenuOpen ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'}`} />
+                  <X size={20} className={`absolute inset-0 transition-all duration-200 ${mobileMenuOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'}`} />
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -111,14 +133,13 @@ export default function Navbar({ scrolled }: NavbarProps) {
         onMouseEnter={() => setExpanded(true)}
         onMouseLeave={() => setExpanded(false)}
         className={`hidden md:flex fixed left-5 top-1/2 -translate-y-1/2 z-50 flex-col items-start gap-0.5
-          rounded-2xl border border-zinc-600/80 bg-zinc-900/90 backdrop-blur-xl
-          shadow-[0_0_24px_4px_rgba(0,0,0,0.6),0_0_0_1px_rgba(34,211,238,0.08)]
+          rounded-2xl border border-border bg-background/80 backdrop-blur-xl
+          shadow-[0_0_24px_4px_rgba(0,0,0,0.1),0_0_0_1px_rgba(0,0,0,0.05)]
+          dark:shadow-[0_0_24px_4px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.05)]
           py-3 transition-all duration-500 ease-in-out overflow-hidden
           ${scrolled ? 'opacity-100 translate-x-0 pointer-events-auto' : 'opacity-0 -translate-x-8 pointer-events-none'}
           ${expanded ? 'w-40 px-2' : 'w-12 px-2'}`}
       >
-
-
         {/* Nav items */}
         {navItems.map((item) => {
           const isActive = activeSection === item.id;
@@ -130,8 +151,8 @@ export default function Navbar({ scrolled }: NavbarProps) {
               title={!expanded ? item.label : undefined}
               className={`relative flex items-center gap-3 w-full rounded-xl px-2 py-2.5 text-xs font-medium transition-all duration-200
                 ${isActive
-                  ? 'text-white bg-white/10 border border-white/10'
-                  : 'text-zinc-500 hover:text-zinc-200 hover:bg-zinc-800/60'
+                  ? 'text-foreground bg-primary/5 border border-primary/10'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-secondary/80'
                 }`}
             >
               {/* Active left bar */}
@@ -144,7 +165,7 @@ export default function Navbar({ scrolled }: NavbarProps) {
                 <Icon
                   size={16}
                   className={`shrink-0 transition-colors duration-200 ml-0.5
-                    ${isActive ? 'text-cyan-400' : 'text-zinc-300 group-hover:text-white'}`}
+                    ${isActive ? 'text-cyan-500 dark:text-cyan-400' : 'text-muted-foreground'}`}
                 />
               )}
 
@@ -158,13 +179,31 @@ export default function Navbar({ scrolled }: NavbarProps) {
             </button>
           );
         })}
+
+        <div className="w-full h-px bg-border my-2" />
+
+        <button
+          onClick={toggleTheme}
+          className={`flex items-center gap-3 w-full rounded-xl px-2 py-2.5 text-xs font-medium transition-all duration-200
+            text-muted-foreground hover:text-foreground hover:bg-secondary/80`}
+        >
+          <div className="ml-0.5 shrink-0">
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+          </div>
+          <span
+            className={`whitespace-nowrap transition-all duration-300 overflow-hidden
+              ${expanded ? 'opacity-100 max-w-[100px]' : 'opacity-0 max-w-0'}`}
+          >
+            {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+          </span>
+        </button>
       </div>
 
       {/* ── MOBILE MENU ── */}
       {mobileVisible && (
         <div
-          className={`md:hidden fixed top-14 left-0 right-0 z-40 mx-3 mt-1 rounded-2xl border border-zinc-700/60
-            bg-zinc-950/95 backdrop-blur-xl shadow-xl shadow-black/40 overflow-hidden
+          className={`md:hidden fixed top-16 left-0 right-0 z-40 mx-3 mt-1 rounded-2xl border border-border
+            bg-background/95 backdrop-blur-xl shadow-xl overflow-hidden
             transition-all duration-300 origin-top
             ${mobileMenuOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-95'}`}
         >
@@ -178,12 +217,12 @@ export default function Navbar({ scrolled }: NavbarProps) {
                   onClick={() => scrollToSection(item.id)}
                   className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 flex items-center gap-3
                     ${isActive
-                      ? 'bg-white/10 text-white border border-white/10'
-                      : 'text-zinc-400 hover:text-white hover:bg-zinc-800/60'
+                      ? 'bg-primary/5 text-foreground border border-primary/10'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-secondary/80'
                     }`}
                 >
                   <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${isActive ? 'bg-gradient-to-r from-cyan-400 to-violet-400' : 'bg-transparent'}`} />
-                  {Icon && <Icon size={15} className={isActive ? 'text-cyan-400' : 'text-zinc-500'} />}
+                  {Icon && <Icon size={15} className={isActive ? 'text-cyan-500 dark:text-cyan-400' : 'text-muted-foreground'} />}
                   {item.label}
                 </button>
               );

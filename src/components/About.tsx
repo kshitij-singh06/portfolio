@@ -101,14 +101,17 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="py-32 px-4 sm:px-6 lg:px-8 bg-zinc-950 relative overflow-hidden"
+      className="py-32 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden"
     >
       {/* Marquee Background — z-0, behind everything */}
-      <div className="absolute top-10 left-0 right-0 overflow-hidden opacity-5 z-0 pointer-events-none">
+      <div className="absolute top-10 left-0 right-0 overflow-hidden opacity-[0.07] dark:opacity-[0.06] z-0 pointer-events-none select-none">
         <div ref={marqueeRef} className="flex whitespace-nowrap">
           {[...Array(4)].map((_, i) => (
-            <span key={i} className="text-8xl font-bold text-white mx-4">
-              {marqueeText}
+            <span key={i} className="flex items-center shrink-0">
+              <span className="text-7xl sm:text-8xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-sky-400 to-violet-500 mx-2">
+                {marqueeText}
+              </span>
+              <span className="inline-block w-3 h-3 rounded-full bg-gradient-to-r from-cyan-400 to-violet-400 mx-4 shrink-0 opacity-60" />
             </span>
           ))}
         </div>
@@ -123,7 +126,7 @@ export default function About() {
         <div className="relative z-10 text-center mb-16">
           <h2
             ref={headingRef}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-4"
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-4"
           >
             About <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-400">Me</span>
           </h2>
@@ -134,22 +137,22 @@ export default function About() {
         </div>
 
         <div ref={paragraphsRef} className="max-w-3xl mx-auto text-center space-y-8">
-          <p className="text-xl text-zinc-300 leading-relaxed">
-            I'm a <span className="text-cyan-400 font-semibold">Computer Science & Engineering</span> student
-            at Dayananda Sagar College of Engineering, Bengaluru, specializing in <span className="text-violet-400 font-semibold">Data Science</span>.
+          <p className="text-xl text-muted-foreground leading-relaxed">
+            I'm a <span className="text-cyan-600 dark:text-cyan-400 font-semibold">Computer Science & Engineering</span> student
+            at Dayananda Sagar College of Engineering, Bengaluru, specializing in <span className="text-violet-600 dark:text-violet-400 font-semibold">Data Science</span>.
             Currently on my undergraduate journey (2023–2027), I'm passionate about building things
             at the intersection of full-stack development, machine learning, and cybersecurity.
           </p>
-          <p className="text-xl text-zinc-300 leading-relaxed">
+          <p className="text-xl text-muted-foreground leading-relaxed">
             I enjoy turning complex problems into clean, scalable solutions, whether that's
-            architecting <span className="text-cyan-400 font-semibold">backend systems and APIs</span>, crafting
-            polished frontends, or training and deploying <span className="text-violet-400 font-semibold">machine learning models</span>.
+            architecting <span className="text-cyan-600 dark:text-cyan-400 font-semibold">backend systems and APIs</span>, crafting
+            polished frontends, or training and deploying <span className="text-violet-600 dark:text-violet-400 font-semibold">machine learning models</span>.
             I'm comfortable across the full stack and always looking to push the boundaries of what I can build.
           </p>
-          <p className="text-xl text-zinc-300 leading-relaxed">
-            Outside of coding, I dive into <span className="text-cyan-400 font-semibold">Capture The Flag</span> competitions,
+          <p className="text-xl text-muted-foreground leading-relaxed">
+            Outside of coding, I dive into <span className="text-cyan-600 dark:text-cyan-400 font-semibold">Capture The Flag</span> competitions,
             explore new technologies, and tinker with side projects. I thrive on hard problems
-            and love collaborating on work that makes a <span className="text-violet-400 font-semibold">real-world impact</span>.
+            and love collaborating on work that makes a <span className="text-violet-600 dark:text-violet-400 font-semibold">real-world impact</span>.
           </p>
         </div>
 

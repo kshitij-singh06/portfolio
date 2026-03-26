@@ -125,21 +125,20 @@ export default function Hero() {
     <section
       id="hero"
       ref={containerRef}
-      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 relative overflow-hidden bg-black"
+      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 relative overflow-hidden bg-background"
     >
       {/* Dotted wave surface — behind everything */}
       <DottedSurface />
 
       {/* Dynamic Gradient Background — semi-transparent so dots show through */}
-      <div className="absolute inset-0 bg-gradient-to-br from-zinc-950/60 via-black/50 to-zinc-950/60"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-background/60 via-background/50 to-background/60"></div>
 
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+
 
       {/* Animated Glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[100px] animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 dark:bg-cyan-500/20 rounded-full blur-[100px] animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/10 dark:bg-violet-500/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
       {/* Floating Icons */}
@@ -147,7 +146,7 @@ export default function Hero() {
         {floatingIcons.map((item, index) => (
           <div
             key={index}
-            className="floating-icon absolute hidden lg:block opacity-30"
+            className="floating-icon absolute hidden lg:block opacity-20 dark:opacity-30"
             style={{
               top: item.top,
               left: item.left,
@@ -157,7 +156,7 @@ export default function Hero() {
           >
             <item.Icon
               size={item.size}
-              className={index % 2 === 0 ? "text-cyan-400" : "text-violet-400"}
+              className={index % 2 === 0 ? "text-cyan-500 dark:text-cyan-400" : "text-violet-500 dark:text-violet-400"}
             />
           </div>
         ))}
@@ -171,7 +170,7 @@ export default function Hero() {
         >
           <div className="relative group cursor-pointer">
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-            <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-white/10 ring-4 ring-black shadow-2xl">
+            <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-border ring-4 ring-background shadow-2xl">
               <img
                 src="/profile.jpg"
                 alt={personalInfo.name}
@@ -191,7 +190,7 @@ export default function Hero() {
 
         <span
           ref={subtitleRef}
-          className="inline-flex items-center px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-zinc-300 text-sm sm:text-base font-medium backdrop-blur-sm mb-8 min-w-[200px] justify-center"
+          className="inline-flex items-center px-4 py-1.5 rounded-full border border-border bg-muted/30 text-muted-foreground text-sm sm:text-base font-medium backdrop-blur-sm mb-8 min-w-[200px] justify-center"
         >
           {displayedTitle}
           <span
@@ -201,7 +200,7 @@ export default function Hero() {
 
         <p
           ref={descriptionRef}
-          className="text-lg sm:text-xl text-zinc-400 mb-10 max-w-2xl mx-auto leading-relaxed"
+          className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed"
         >
           {personalInfo.description}
         </p>
@@ -213,7 +212,7 @@ export default function Hero() {
         >
           <Button
             onClick={() => scrollToSection('projects')}
-            className="bg-white text-black hover:bg-zinc-200 px-8 py-6 text-base font-semibold rounded-full transition-all hover:scale-105"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base font-semibold rounded-full transition-all hover:scale-105"
           >
             <Zap className="w-5 h-5 mr-2" />
             View Work
@@ -222,7 +221,7 @@ export default function Hero() {
           <Button
             variant="outline"
             asChild
-            className="bg-black/50 border-zinc-800 text-white hover:bg-zinc-900 hover:text-white px-8 py-6 text-base font-semibold rounded-full transition-all hover:scale-105 backdrop-blur-sm"
+            className="bg-background/50 border-border text-foreground hover:bg-muted hover:text-foreground px-8 py-6 text-base font-semibold rounded-full transition-all hover:scale-105 backdrop-blur-sm"
           >
             <a href={personalInfo.resume} download>
               <Download className="w-5 h-5 mr-2" />
@@ -233,7 +232,7 @@ export default function Hero() {
           <Button
             variant="outline"
             onClick={() => scrollToSection('contact')}
-            className="bg-black/50 border-zinc-800 text-white hover:bg-zinc-900 hover:text-white px-8 py-6 text-base font-semibold rounded-full transition-all hover:scale-105 backdrop-blur-sm"
+            className="bg-background/50 border-border text-foreground hover:bg-muted hover:text-foreground px-8 py-6 text-base font-semibold rounded-full transition-all hover:scale-105 backdrop-blur-sm"
           >
             <Mail className="w-5 h-5 mr-2" />
             Contact
@@ -251,9 +250,9 @@ export default function Hero() {
               href={social.href}
               target={social.href.startsWith('mailto') ? undefined : '_blank'}
               rel="noopener noreferrer"
-              className="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
+              className="p-3 bg-muted/30 border border-border rounded-xl hover:bg-muted/50 hover:border-primary/20 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
             >
-              <social.Icon className="w-5 h-5 text-zinc-400 hover:text-white transition-colors" />
+              <social.Icon className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
             </a>
           ))}
         </div>
