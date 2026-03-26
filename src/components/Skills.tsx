@@ -61,7 +61,7 @@ export default function Skills() {
     <section
       id="skills"
       ref={sectionRef}
-      className="py-32 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden"
     >
       {/* Radial gradient background — same as Projects */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.06),transparent_60%)]" />

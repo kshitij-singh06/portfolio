@@ -46,7 +46,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" ref={sectionRef} className="py-32 px-4 sm:px-6 lg:px-8 bg-zinc-950/50 relative overflow-hidden">
+    <section id="projects" ref={sectionRef} className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-950/50 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,0.1),transparent_50%)]"></div>
       <div className="max-w-6xl mx-auto relative z-10">
         <div ref={headingRef} className="text-center mb-16">

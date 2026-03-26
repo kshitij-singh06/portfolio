@@ -103,8 +103,8 @@ export default function About() {
       ref={sectionRef}
       className="py-32 px-4 sm:px-6 lg:px-8 bg-zinc-950 relative overflow-hidden"
     >
-      {/* Marquee Background */}
-      <div className="absolute top-10 left-0 right-0 overflow-hidden opacity-5">
+      {/* Marquee Background — z-0, behind everything */}
+      <div className="absolute top-10 left-0 right-0 overflow-hidden opacity-5 z-0 pointer-events-none">
         <div ref={marqueeRef} className="flex whitespace-nowrap">
           {[...Array(4)].map((_, i) => (
             <span key={i} className="text-8xl font-bold text-white mx-4">
@@ -119,7 +119,8 @@ export default function About() {
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-violet-500/5 to-transparent rounded-full blur-3xl"></div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+        {/* Heading + bar in their own stacking context */}
+        <div className="relative z-10 text-center mb-16">
           <h2
             ref={headingRef}
             className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-4"
@@ -129,7 +130,7 @@ export default function About() {
           <div
             ref={lineRef}
             className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-violet-500 mx-auto origin-left"
-          ></div>
+          />
         </div>
 
         <div ref={paragraphsRef} className="max-w-3xl mx-auto text-center space-y-8">
