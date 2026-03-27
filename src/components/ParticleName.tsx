@@ -161,13 +161,14 @@ export function ParticleName() {
 
   // Stored so drawSolidText can reproduce the exact same layout
   const textSettingsRef = useRef({ fontSize: 60, cx: 0, cy: 0 })
+  const lastDimensions = useRef({ w: 0, h: 0 })
 
   const PADDING = 100
   const pixelSteps = 5
   const name = "Kshitij Singh"
 
   // Draws the final solid gradient text — called during and after the fade.
-  const drawSolidText = (ctx: CanvasRenderingContext2D, canvasW: number, canvasH: number) => {
+  const drawSolidText = (ctx: CanvasRenderingContext2D, canvasW: number) => {
     const { fontSize, cx, cy } = textSettingsRef.current
     const grad = ctx.createLinearGradient(0, 0, canvasW, 0)
     grad.addColorStop(0, "rgb(34,  211, 238)")  // cyan-400
@@ -333,7 +334,7 @@ export function ParticleName() {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       for (const particle of particles) particle.draw(ctx)
       ctx.globalAlpha = textAlpha
-      drawSolidText(ctx, canvas.width, canvas.height)
+      drawSolidText(ctx, canvas.width)
       ctx.globalAlpha = 1.0
 
       if (textAlpha < 1.0) {
@@ -354,7 +355,7 @@ export function ParticleName() {
 
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       // Draw solid text at full opacity first (background layer)
-      drawSolidText(ctx, canvas.width, canvas.height)
+      drawSolidText(ctx, canvas.width)
       // Draw dots on top with decreasing opacity
       ctx.globalAlpha = dotsAlpha
       for (const particle of particles) particle.draw(ctx)
@@ -363,7 +364,7 @@ export function ParticleName() {
       if (dotsAlpha <= 0) {
         // Final state: clear canvas and draw only solid text
         ctx.clearRect(0, 0, canvas.width, canvas.height)
-        drawSolidText(ctx, canvas.width, canvas.height)
+        drawSolidText(ctx, canvas.width)
         return  // Loop stops — only crisp solid text remains
       }
 
@@ -382,6 +383,12 @@ export function ParticleName() {
     const updateSize = () => {
       const W = container.clientWidth
       const H = container.clientHeight
+
+      // Only reset if dimensions actually changed. 
+      // Prevents disappearing/restarting on mobile address bar toggle.
+      if (W === lastDimensions.current.w && H === lastDimensions.current.h) return
+      lastDimensions.current = { w: W, h: H }
+
       canvas.width = W + PADDING * 2
       canvas.height = H + PADDING * 2
       canvas.style.position = "absolute"
@@ -391,18 +398,38 @@ export function ParticleName() {
       canvas.style.height = `${canvas.height}px`
 
       particlesRef.current = []
-      // Reset fixed-timestep state on resize so there's no phantom elapsed time.
+      // Reset all timing/phase state
       lastTimeRef.current = null
       accumulatorRef.current = 0
+      fadingRef.current = false
+      fadeStartRef.current = 0
+      settledTimeRef.current = 0
+      dotsHoldRef.current = 0
+      dotsFadeRef.current = 0
 
       initParticles(canvas, W, H)
+
+      // Restart animation loop
+      if (animationRef.current) cancelAnimationFrame(animationRef.current)
+      animationRef.current = requestAnimationFrame(animate)
     }
 
-    updateSize()
+    // Listen for theme changes (e.g. from a Navbar toggle) to re-init colors
+    const observer = new MutationObserver(() => {
+      // Small delay to ensure CSS variables/classes are fully applied
+      setTimeout(updateSize, 50)
+    })
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+
+    // Ensure fonts are loaded before we sample pixels for the offscreen canvas
+    document.fonts.ready.then(() => {
+      updateSize()
+    })
+
     window.addEventListener("resize", updateSize)
-    animationRef.current = requestAnimationFrame(animate)
 
     return () => {
+      observer.disconnect()
       if (animationRef.current) cancelAnimationFrame(animationRef.current)
       window.removeEventListener("resize", updateSize)
     }

@@ -421,40 +421,39 @@ body {
 
 @layer base {
   :root {
-    /* Cool slate-grey background — dim, not glaring */
-    --background: 218 18% 86%;
-    /* Rich deep-slate foreground */
-    --foreground: 222 47% 10%;
+    /* Soft, clean base with stronger text contrast */
+    --background: 220 25% 95%;
+    --foreground: 222 47% 12%;
 
-    /* Card: lighter than bg to create surface elevation */
-    --card: 218 20% 91%;
-    --card-foreground: 222 47% 10%;
+    /* Card: brighter than bg to create elevation */
+    --card: 220 24% 98%;
+    --card-foreground: 222 47% 12%;
 
-    --popover: 218 20% 93%;
-    --popover-foreground: 222 47% 10%;
+    --popover: 220 24% 97%;
+    --popover-foreground: 222 47% 12%;
 
     /* Primary: vivid cyan — keeps the site's accent identity */
     --primary: 186 85% 34%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary: darker grey fill for hover states */
-    --secondary: 218 16% 80%;
-    --secondary-foreground: 222 47% 10%;
+    /* Secondary: clearer separation for hovers and pills */
+    --secondary: 218 20% 88%;
+    --secondary-foreground: 222 47% 12%;
 
-    /* Muted: subdued background tone */
-    --muted: 218 16% 82%;
-    --muted-foreground: 215 20% 38%;
+    /* Muted: readable on light surfaces */
+    --muted: 218 22% 90%;
+    --muted-foreground: 215 22% 32%;
 
-    /* Accent: same as secondary */
-    --accent: 218 16% 80%;
-    --accent-foreground: 222 47% 10%;
+    /* Accent: aligned with secondary */
+    --accent: 218 20% 88%;
+    --accent-foreground: 222 47% 12%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Border & input: visible dividers on the grey surface */
-    --border: 216 18% 75%;
-    --input: 216 18% 75%;
+    /* Border & input: stronger edge definition */
+    --border: 218 18% 78%;
+    --input: 218 18% 78%;
     --ring: 186 85% 34%;
 
     --chart-1: 186 85% 34%;

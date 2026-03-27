@@ -31,16 +31,17 @@ export default function About() {
         }
       );
 
-      // Animated underline
+      // Animated underline — triggers off the heading so it always appears after the heading has started animating in (0.5s delay).
       gsap.fromTo(
         lineRef.current,
         { scaleX: 0 },
         {
           scaleX: 1,
-          duration: 1,
+          duration: 0.8,
+          delay: 0.5,
           ease: 'power4.out',
           scrollTrigger: {
-            trigger: lineRef.current,
+            trigger: headingRef.current,
             start: 'top 80%',
             toggleActions: 'play none none reverse',
           },
@@ -79,16 +80,6 @@ export default function About() {
         });
       }
 
-      // Parallax text movement on scroll
-      gsap.to(headingRef.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1,
-        },
-        y: -50,
-      });
 
     }, sectionRef);
 
@@ -101,17 +92,17 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="py-32 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden"
+      className="py-24 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden"
     >
       {/* Marquee Background — z-0, behind everything */}
-      <div className="absolute top-10 left-0 right-0 overflow-hidden opacity-[0.07] dark:opacity-[0.06] z-0 pointer-events-none select-none">
+      <div className="absolute top-10 left-0 right-0 overflow-hidden opacity-[0.12] dark:opacity-[0.1] z-0 pointer-events-none select-none">
         <div ref={marqueeRef} className="flex whitespace-nowrap">
           {[...Array(4)].map((_, i) => (
             <span key={i} className="flex items-center shrink-0">
-              <span className="text-7xl sm:text-8xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-sky-400 to-violet-500 mx-2">
+              <span className="text-7xl sm:text-8xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-sky-500 to-violet-600 mx-2">
                 {marqueeText}
               </span>
-              <span className="inline-block w-3 h-3 rounded-full bg-gradient-to-r from-cyan-400 to-violet-400 mx-4 shrink-0 opacity-60" />
+              <span className="inline-block w-3 h-3 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 mx-4 shrink-0 opacity-80" />
             </span>
           ))}
         </div>
@@ -122,8 +113,8 @@ export default function About() {
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-violet-500/5 to-transparent rounded-full blur-3xl"></div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Heading + bar in their own stacking context */}
-        <div className="relative z-10 text-center mb-16">
+        {/* Heading + bar */}
+        <div className="relative z-10 text-center mb-16 mt-10">
           <h2
             ref={headingRef}
             className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-4"

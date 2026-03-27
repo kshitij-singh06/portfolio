@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import emailjs from '@emailjs/browser';
-import { Mail, MapPin, Send, Loader2, CheckCircle2 } from 'lucide-react';
+import { Mail, MapPin, Send, Loader2, CheckCircle2, ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { socialLinks, personalInfo } from '../data';
@@ -66,6 +66,10 @@ export default function Contact() {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -162,6 +166,14 @@ export default function Contact() {
 
       <div className="mt-20 text-center relative z-10">
         <p className="text-muted-foreground/60">© {new Date().getFullYear()} {personalInfo.name}. Built with React & GSAP</p>
+        <button
+          type="button"
+          onClick={scrollToTop}
+          className="mt-5 inline-flex items-center gap-2 rounded-full border border-border bg-muted/30 px-4 py-2 text-sm text-foreground hover:bg-muted/50 hover:border-primary/30 transition-all"
+        >
+          <ArrowUp className="w-4 h-4" />
+          Back to top
+        </button>
       </div>
     </section>
   );
