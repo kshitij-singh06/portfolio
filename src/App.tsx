@@ -68,8 +68,8 @@ function App() {
       <Navbar scrolled={scrolled} theme={theme} toggleTheme={toggleTheme} />
       <Hero />
       <About />
-      <Skills />
       <Projects />
+      <Skills />
       <Contact />
       <Analytics />
     </div>

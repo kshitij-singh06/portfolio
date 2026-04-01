@@ -15,41 +15,28 @@ export const socialLinks = [
     { href: 'mailto:kshitij.tech06@gmail.com', Icon: Mail, label: "Email" },
 ];
 
-export const skillCategories = [
+export const skillDomains = [
     {
-        title: 'Languages',
-        icon: Code2,
-        skills: ['Python', 'C++', 'JavaScript', 'SQL', 'R'],
+        domain: 'Development',
+        categories: [
+            { title: 'Languages', icon: Code2, skills: ['Python', 'C++', 'JavaScript', 'SQL', 'R'] },
+            { title: 'Frontend', icon: Code, skills: ['React', 'Tailwind CSS', 'HTML', 'CSS'] },
+            { title: 'Backend', icon: Server, skills: ['Node.js', 'Express', 'FastAPI', 'REST APIs'] },
+            { title: 'Databases', icon: Database, skills: ['PostgreSQL', 'MongoDB', 'MySQL'] },
+        ],
     },
     {
-        title: 'Frontend',
-        icon: Code,
-        skills: ['React', 'Tailwind CSS', 'HTML', 'CSS'],
+        domain: 'AI & Data Science',
+        categories: [
+            { title: 'Machine Learning', icon: Cpu, skills: ['PyTorch', 'TensorFlow', 'scikit-learn', 'XGBoost', 'Pandas', 'NumPy'] },
+            { title: 'Data Science', icon: BarChart3, skills: ['Matplotlib', 'Seaborn', 'Power BI', 'Tableau', 'Airflow', 'dbt', 'Snowflake'] },
+        ],
     },
     {
-        title: 'Backend',
-        icon: Server,
-        skills: ['Node.js', 'Express', 'FastAPI', 'REST APIs'],
-    },
-    {
-        title: 'Databases',
-        icon: Database,
-        skills: ['PostgreSQL', 'MongoDB', 'MySQL'],
-    },
-    {
-        title: 'Machine Learning',
-        icon: Cpu,
-        skills: ['PyTorch', 'TensorFlow', 'scikit-learn', 'XGBoost', 'Pandas', 'NumPy'],
-    },
-    {
-        title: 'Data Science',
-        icon: BarChart3,
-        skills: ['Matplotlib', 'Seaborn', 'Power BI', 'Tableau', 'Airflow', 'dbt', 'Snowflake',],
-    },
-    {
-        title: 'Tools & Platforms',
-        icon: Settings,
-        skills: ['Git', 'Docker', 'Linux', 'AWS'],
+        domain: 'Security & Infrastructure',
+        categories: [
+            { title: 'Tools & Platforms', icon: Settings, skills: ['Git', 'Docker', 'Linux', 'AWS'] },
+        ],
     },
 ];
 
@@ -72,28 +59,12 @@ export const projects = [
         liveDemo: 'https://intelx1337.vercel.app/'
     },
     {
-        title: 'Visual language translation engine',
-        description:
-            'It is an automated scanlation tool that streamlines manga translation using Computer Vision and NLP for text detection, inpainting, translation, and typesetting. It reduces release time while maintaining high accuracy and accessibility for global readers.',
-
-        tags: [
-            "Python",
-            "OpenCV",
-            "PyTorch",
-            "PaddleOCR / Tesseract OCR",
-            "Pillow (PIL)", " NumPy",
-            "Google / DeepL / OpenAI APIs"
-        ],
-        github: 'https://github.com/kshitij-singh06/Manga-Translator',
-        featured: true
-    },
-    {
         title: 'NetScope – Deep Packet Inspection',
         description:
             'Developed a high-performance multi-threaded packet inspection engine in C++ to capture and analyze live network traffic and large PCAP traffic streams, extracting application layer signals such as TLS SNI, HTTP host metadata, and DNS query patterns. Designed a scalable flow-aware processing architecture using load-balanced worker threads and thread-safe queues.',
-        tags: ['C++', 'JavaScript',  'Multithreading', 'Network Security'],
+        tags: ['C++', 'JavaScript', 'Multithreading', 'Network Security'],
         github: 'https://github.com/kshitij-singh06/NetScope',
-        liveDemo:'https://kshitij-singh06.github.io/NetScope',
+        liveDemo: 'https://kshitij-singh06.github.io/NetScope',
         featured: true
     },
     {
@@ -112,7 +83,7 @@ export const projects = [
         tags: ['Python', 'React', 'Node.js', 'Supabase', 'Tkinter'],
         github: 'https://github.com/kshitij-singh06/Secure-wipe',
         liveDemo: 'https://secure-wipe.pages.dev/',
-        featured: true
+        featured: false
     },
 
 

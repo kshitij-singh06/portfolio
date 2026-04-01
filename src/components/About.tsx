@@ -92,7 +92,7 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden"
+      className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden"
     >
       {/* Marquee Background — z-0, behind everything */}
       <div className="absolute top-10 left-0 right-0 overflow-hidden opacity-[0.12] dark:opacity-[0.1] z-0 pointer-events-none select-none">
@@ -127,24 +127,20 @@ export default function About() {
           />
         </div>
 
-        <div ref={paragraphsRef} className="max-w-3xl mx-auto text-center space-y-8">
-          <p className="text-xl text-muted-foreground leading-relaxed">
+        <div ref={paragraphsRef} className="max-w-3xl mx-auto space-y-6 md:space-y-8">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed text-left md:text-center">
             I'm a <span className="text-cyan-600 dark:text-cyan-400 font-semibold">Computer Science & Engineering</span> student
             at Dayananda Sagar College of Engineering, Bengaluru, specializing in <span className="text-violet-600 dark:text-violet-400 font-semibold">Data Science</span>.
             Currently on my undergraduate journey (2023–2027), I'm passionate about building things
             at the intersection of full-stack development, machine learning, and cybersecurity.
           </p>
-          <p className="text-xl text-muted-foreground leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed text-left md:text-center">
             I enjoy turning complex problems into clean, scalable solutions, whether that's
             architecting <span className="text-cyan-600 dark:text-cyan-400 font-semibold">backend systems and APIs</span>, crafting
             polished frontends, or training and deploying <span className="text-violet-600 dark:text-violet-400 font-semibold">machine learning models</span>.
             I'm comfortable across the full stack and always looking to push the boundaries of what I can build.
           </p>
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            Outside of coding, I dive into <span className="text-cyan-600 dark:text-cyan-400 font-semibold">Capture The Flag</span> competitions,
-            explore new technologies, and tinker with side projects. I thrive on hard problems
-            and love collaborating on work that makes a <span className="text-violet-600 dark:text-violet-400 font-semibold">real-world impact</span>.
-          </p>
+          
         </div>
 
       </div>
