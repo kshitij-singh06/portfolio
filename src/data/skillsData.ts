@@ -26,16 +26,15 @@ export const skillLogos: Record<string, string> = {
   'Linux':        'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg',
   'AWS':          'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg',
   'Azure':        'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg',
-  'Power BI':     'https://cdn.simpleicons.org/powerbi/F2C811',
-  'Tableau':      'https://cdn.simpleicons.org/tableau/E97627',
-  'dbt':          'https://cdn.simpleicons.org/dbt/FF694B',
-  'Snowflake':    'https://cdn.simpleicons.org/snowflake/29B5E8',
+  'Power BI':     'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/powerbi.svg',
+  'Tableau':      'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/tableau.svg',
+  'dbt':          'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/dbt.svg',
+  'Snowflake':    'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/snowflake.svg',
   'SQL':          'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg',
   'REST APIs':    'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg',
-  'XGBoost':      'https://upload.wikimedia.org/wikipedia/commons/6/69/XGBoost_logo.svg',
   'Seaborn':      'https://seaborn.pydata.org/_images/logo-mark-lightbg.svg',
   'Prisma':       'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg',
 };
 
 // Logos that are black/dark-only and must be inverted in dark mode
-export const invertInDark = new Set(['Express', 'AWS', 'Prisma']);
+export const invertInDark = new Set(['Express', 'AWS', 'Prisma', 'Power BI', 'Tableau', 'dbt', 'Snowflake']);

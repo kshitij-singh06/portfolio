@@ -149,8 +149,7 @@ const HeroCard = ({ section }: { section: typeof heroSections[0] }) => {
       {/* Header */}
       <div className="flex items-start justify-between gap-4 relative z-10">
         <div>
-          <h3 className="text-2xl sm:text-3xl font-bold leading-tight"
-            style={{ background: `linear-gradient(135deg, ${section.from}, ${section.to})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+          <h3 className="text-2xl sm:text-3xl font-bold leading-tight text-cyan-600 dark:text-cyan-400">
             {section.title}
           </h3>
         </div>
@@ -220,8 +219,7 @@ const BentoCard = ({ section }: { section: typeof otherSections[0] }) => {
       {/* Header */}
       <div className="flex items-start justify-between gap-4 relative z-10">
         <div>
-          <h3 className="text-xl sm:text-2xl font-bold leading-tight"
-            style={{ background: `linear-gradient(135deg, ${section.from}, ${section.to})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+          <h3 className="text-xl sm:text-2xl font-bold leading-tight text-cyan-600 dark:text-cyan-400">
             {section.title}
           </h3>
         </div>
@@ -293,8 +291,8 @@ export default function Skills() {
         {/* Heading */}
         <div ref={headingRef} className="text-center mb-12 sm:mb-16">
           <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground mb-4 sm:mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-400">
-              Technical Skills
+            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-400">
+               Skills
             </span>
           </h2>
           <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-cyan-500 to-violet-500 mx-auto mb-4 sm:mb-6" />

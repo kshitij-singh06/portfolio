@@ -95,7 +95,7 @@ export default function About() {
       className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden"
     >
       {/* Marquee Background — z-0, behind everything */}
-      <div className="absolute top-10 left-0 right-0 overflow-hidden opacity-[0.12] dark:opacity-[0.1] z-0 pointer-events-none select-none">
+      <div className="absolute top-10 left-0 right-0 overflow-hidden opacity-[0.25] dark:opacity-[0.2] z-0 pointer-events-none select-none">
         <div ref={marqueeRef} className="flex whitespace-nowrap">
           {[...Array(4)].map((_, i) => (
             <span key={i} className="flex items-center shrink-0">
@@ -140,7 +140,7 @@ export default function About() {
             polished frontends, or training and deploying <span className="text-violet-600 dark:text-violet-400 font-semibold">machine learning models</span>.
             I'm comfortable across the full stack and always looking to push the boundaries of what I can build.
           </p>
-          
+
         </div>
 
       </div>
