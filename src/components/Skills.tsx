@@ -13,9 +13,9 @@ const heroSections = [
     from: '#06b6d4', to: '#6366f1',
     colSpan: 'md:col-span-3 order-1 md:order-1',
     subSections: [
-      { label: 'Languages', skills: ['Python', 'C++', 'JavaScript', 'SQL', 'R'] },
-      { label: 'Frontend', skills: ['React', 'HTML', 'CSS', 'Tailwind CSS'] },
-      { label: 'Backend', skills: ['Node.js', 'Express', 'FastAPI', 'REST APIs'] },
+      { label: 'Languages', skills: ['Python', 'C++', 'JavaScript', 'TypeScript', 'SQL'] },
+      { label: 'Frontend', skills: ['React', 'HTML', 'CSS', 'Tailwind CSS', 'Figma'] },
+      { label: 'Backend', skills: ['Node.js', 'Express', 'FastAPI', 'Postman'] },
     ]
   },
   {
@@ -25,7 +25,7 @@ const heroSections = [
     colSpan: 'md:col-span-2 order-3 md:order-2',
     subSections: [
       { label: 'Machine Learning', skills: ['PyTorch', 'TensorFlow', 'scikit-learn', 'XGBoost'] },
-      { label: 'Analytics', skills: ['Pandas', 'NumPy', 'Airflow', 'Snowflake'] },
+      { label: 'Analytics', skills: ['R', 'Pandas', 'NumPy', 'Airflow', 'Snowflake'] },
       { label: 'Visualization', skills: ['Matplotlib', 'Seaborn', 'Power BI', 'Tableau'] },
     ]
   }
@@ -35,7 +35,7 @@ const otherSections = [
   {
     id: 'databases',
     title: 'Databases',
-    skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Prisma'],
+    skills: ['PostgreSQL', 'MongoDB', 'Supabase', 'MySQL', 'Prisma'],
     from: '#f43f5e', to: '#a855f7',
     glow: 'rgba(244,63,94,0.15)',
     colSpan: 'md:col-span-2 order-2 md:order-3',

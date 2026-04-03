@@ -3,6 +3,7 @@ export const skillLogos: Record<string, string> = {
   'Python':       'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
   'C++':          'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg',
   'JavaScript':   'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
+  'TypeScript':   'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
   'R':            'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/r/r-original.svg',
   'React':        'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
   'Tailwind CSS': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
@@ -31,9 +32,11 @@ export const skillLogos: Record<string, string> = {
   'dbt':          'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/dbt.svg',
   'Snowflake':    'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/snowflake.svg',
   'SQL':          'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg',
-  'REST APIs':    'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg',
+  'Postman':      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg',
   'Seaborn':      'https://seaborn.pydata.org/_images/logo-mark-lightbg.svg',
   'Prisma':       'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg',
+  'Supabase':     'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg',
+  'Figma':        'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg',
 };
 
 // Logos that are black/dark-only and must be inverted in dark mode

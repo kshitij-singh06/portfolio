@@ -19,17 +19,17 @@ export const skillDomains = [
     {
         domain: 'Development',
         categories: [
-            { title: 'Languages', icon: Code2, skills: ['Python', 'C++', 'JavaScript', 'SQL', 'R'] },
-            { title: 'Frontend', icon: Code, skills: ['React', 'Tailwind CSS', 'HTML', 'CSS'] },
-            { title: 'Backend', icon: Server, skills: ['Node.js', 'Express', 'FastAPI', 'REST APIs'] },
-            { title: 'Databases', icon: Database, skills: ['PostgreSQL', 'MongoDB', 'MySQL'] },
+            { title: 'Languages', icon: Code2, skills: ['Python', 'C++', 'JavaScript', 'TypeScript', 'SQL'] },
+            { title: 'Frontend', icon: Code, skills: ['React', 'Tailwind CSS', 'HTML', 'CSS', 'Figma'] },
+            { title: 'Backend', icon: Server, skills: ['Node.js', 'Express', 'FastAPI', 'Postman'] },
+            { title: 'Databases', icon: Database, skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Supabase', 'Prisma'] },
         ],
     },
     {
         domain: 'AI & Data Science',
         categories: [
             { title: 'Machine Learning', icon: Cpu, skills: ['PyTorch', 'TensorFlow', 'scikit-learn', 'XGBoost', 'Pandas', 'NumPy'] },
-            { title: 'Data Science', icon: BarChart3, skills: ['Matplotlib', 'Seaborn', 'Power BI', 'Tableau', 'Airflow', 'dbt', 'Snowflake'] },
+            { title: 'Data Science', icon: BarChart3, skills: ['R', 'Matplotlib', 'Seaborn', 'Power BI', 'Tableau', 'Airflow', 'dbt', 'Snowflake'] },
         ],
     },
     {
@@ -43,8 +43,8 @@ export const skillDomains = [
 export const navItems = [
     { label: 'Home', id: 'hero' },
     { label: 'About', id: 'about' },
-    { label: 'Skills', id: 'skills' },
     { label: 'Projects', id: 'projects' },
+    { label: 'Skills', id: 'skills' },
     { label: 'Contact', id: 'contact' },
 ];
 
