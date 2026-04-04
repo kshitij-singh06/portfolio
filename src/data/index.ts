@@ -6,7 +6,7 @@ export const personalInfo = {
     description: "Building scalable web applications and exploring the world of machine learning. Passionate about clean code, data-driven solutions, and elegant architecture.",
     email: "kshitij.tech06@gmail.com",
     location: "Bengaluru, Karnataka",
-    resume: "/resume.pdf"
+    resume: "https://ubhgkplrqnklhwucilmu.supabase.co/storage/v1/object/public/portfolio-asset/kshitij_resume.pdf"
 };
 
 export const socialLinks = [
