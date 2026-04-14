@@ -161,7 +161,6 @@ const HeroCard = ({ section }: { section: typeof heroSections[0] }) => {
           <div key={sub.label} className="flex flex-col gap-2">
             {/* Sub-label */}
             <div className="flex items-center gap-2 px-1">
-              <span className="text-xs font-mono opacity-80" style={{ color: section.from }}>{sub.icon}</span>
               <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground/60">{sub.label}</span>
               <div className="flex-1 h-px bg-border/30" />
             </div>
@@ -251,19 +250,19 @@ export default function Skills() {
         { y: 100, opacity: 0 },
         {
           y: 0, opacity: 1, duration: 1, ease: 'power4.out',
-          scrollTrigger: { trigger: headingRef.current, start: 'top 85%', toggleActions: 'play none none reverse' },
+          scrollTrigger: { trigger: headingRef.current, start: 'top 95%', toggleActions: 'play none none reverse' },
         }
       );
 
       // Bento cards stagger
       gsap.fromTo(
         '.bento-card',
-        { y: 60, opacity: 0, scale: 0.96 },
+        { y: 40, opacity: 0, scale: 0.96 },
         {
-          y: 0, opacity: 1, scale: 1, duration: 0.65, stagger: 0.1, ease: 'power3.out',
+          y: 0, opacity: 1, scale: 1, duration: 0.65, delay: 0.15, stagger: 0.1, ease: 'power3.out',
           scrollTrigger: {
             trigger: containerRef.current,
-            start: 'top 82%',
+            start: 'top 95%',
             toggleActions: 'play none none reverse',
           },
         }
@@ -276,7 +275,7 @@ export default function Skills() {
     <section
       id="skills"
       ref={sectionRef}
-      className="py-16 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden"
+      className="py-16 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden [overflow-x:hidden]"
     >
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.06),transparent_60%)]" />
 
@@ -291,11 +290,11 @@ export default function Skills() {
         {/* Heading */}
         <div ref={headingRef} className="text-center mb-12 sm:mb-16">
           <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground mb-4 sm:mb-6">
-            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-400">
-               Skills
+            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0C6B84] to-violet-400 dark:from-cyan-400 dark:to-violet-400">
+              Skills
             </span>
           </h2>
-          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-cyan-500 to-violet-500 mx-auto mb-4 sm:mb-6" />
+          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-[#0C6B84] to-violet-500 dark:from-cyan-500 dark:to-violet-500 mx-auto mb-4 sm:mb-6" />
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base lg:text-lg mb-8">
             Technologies and tools I use to bring ideas to life
           </p>

@@ -1,19 +1,18 @@
 import { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
-import { Download, Mail, Zap } from 'lucide-react';
-import { personalInfo, floatingIcons, socialLinks } from '../data';
-import { DottedSurface } from './DottedSurface';
-import { ParticleName } from './ParticleName';
+import { Download, FolderOpen } from 'lucide-react';
+import { personalInfo, socialLinks } from '../data';
+import SmokeBackground from './SmokeBackground';
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLSpanElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
   const socialsRef = useRef<HTMLDivElement>(null);
-  const floatingIconsRef = useRef<HTMLDivElement>(null);
 
   // Typewriter effect state
   const [displayedTitle, setDisplayedTitle] = useState('');
@@ -29,7 +28,7 @@ export default function Hero() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Initial setup - hide elements
-      gsap.set([subtitleRef.current, descriptionRef.current, buttonsRef.current, socialsRef.current], {
+      gsap.set([titleRef.current, subtitleRef.current, descriptionRef.current, buttonsRef.current, socialsRef.current], {
         opacity: 0,
         y: 100,
       });
@@ -45,11 +44,16 @@ export default function Hero() {
         duration: 0.8,
         ease: 'power3.out',
       })
+        .to(titleRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+        }, '-=0.4')
         .to(subtitleRef.current, {
           opacity: 1,
           y: 0,
           duration: 0.8,
-        }, '-=0.2')
+        }, '-=0.6')
         .to(descriptionRef.current, {
           opacity: 1,
           y: 0,
@@ -66,25 +70,6 @@ export default function Hero() {
           duration: 0.6,
         }, '-=0.2');
 
-      // Floating icons animation
-      if (floatingIconsRef.current) {
-        const icons = floatingIconsRef.current.querySelectorAll('.floating-icon');
-        icons.forEach((icon, i) => {
-          gsap.to(icon, {
-            y: 'random(-30, 30)',
-            x: 'random(-20, 20)',
-            rotation: 'random(-15, 15)',
-            duration: 'random(3, 5)',
-            repeat: -1,
-            yoyo: true,
-            ease: 'sine.inOut',
-            delay: i * 0.2,
-          });
-        });
-      }
-
-
-      // Text character animation for heading removed as ParticleName handles its own reveal
 
     }, containerRef);
 
@@ -125,136 +110,111 @@ export default function Hero() {
     <section
       id="hero"
       ref={containerRef}
-      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 relative overflow-hidden bg-background"
+      className="min-h-screen flex items-center justify-center px-6 sm:px-10 lg:px-16 pt-16 pb-8 relative overflow-hidden bg-background"
     >
-      {/* Dotted wave surface — behind everything */}
-      <DottedSurface />
-
-      {/* Dynamic Gradient Background — semi-transparent so dots show through */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background/60 via-background/50 to-background/60"></div>
-
-
-
-      {/* Animated Glows */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 dark:bg-cyan-500/20 rounded-full blur-[100px] animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/10 dark:bg-violet-500/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute inset-0 pointer-events-none opacity-30 dark:opacity-55">
+        <SmokeBackground smokeColor="#3b82f6" className="w-full h-full block" />
       </div>
 
-      {/* Floating Icons */}
-      <div ref={floatingIconsRef} className="absolute inset-0 pointer-events-none">
-        {floatingIcons.map((item, index) => (
-          <div
-            key={index}
-            className="floating-icon absolute hidden lg:block opacity-20 dark:opacity-30"
-            style={{
-              top: item.top,
-              left: item.left,
-              right: item.right,
-              bottom: item.bottom,
-            }}
+      {/* Dark mode: Reverted to original background layout */}
+      <div className="absolute inset-0 hidden dark:block bg-gradient-to-br from-background/80 via-background/65 to-background/75 pointer-events-none" />
+      
+      {/* Light mode: Clean background with subtle blue gradient */}
+      <div className="absolute inset-0 dark:hidden bg-background/70 pointer-events-none" />
+      <div className="absolute inset-0 dark:hidden bg-gradient-to-br from-blue-50/40 via-transparent to-purple-50/40 pointer-events-none mix-blend-overlay" />
+
+      <div className="max-w-[1100px] mx-auto w-full relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        {/* Left Side: Text Content */}
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
+          <h1
+            ref={titleRef}
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600 dark:from-cyan-400 dark:to-violet-500 mb-6 drop-shadow-sm leading-tight transition-all duration-700 ease-out"
           >
-            <item.Icon
-              size={item.size}
-              className={index % 2 === 0 ? "text-cyan-500 dark:text-cyan-400" : "text-violet-500 dark:text-violet-400"}
-            />
-          </div>
-        ))}
-      </div>
+            {personalInfo.name}
+          </h1>
 
-      <div className="max-w-4xl mx-auto text-center relative z-10">
-        {/* Profile Picture - Always colorful, no rotation */}
-        <div
-          ref={profileRef}
-          className="mb-8 flex justify-center"
-        >
-          <div className="relative group cursor-pointer">
-            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-            <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-border ring-4 ring-background shadow-2xl">
-              <img
-                src="/profile.jpg"
-                alt={personalInfo.name}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                onError={(e) => {
-                  e.currentTarget.src = 'https://placehold.co/600x400';
-                }}
-              />
+          <span
+            ref={subtitleRef}
+            className="inline-flex items-center px-4 py-1.5 rounded-full border border-border bg-muted/30 text-muted-foreground text-sm font-medium backdrop-blur-sm mb-4 justify-center lg:justify-start"
+          >
+            {displayedTitle}
+            <span
+              className={`ml-0.5 w-0.5 h-4 bg-cyan-400 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`}
+            />
+          </span>
+
+          <p
+            ref={descriptionRef}
+            className="text-base sm:text-lg text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+          >
+            {personalInfo.description}
+          </p>
+
+          {/* Buttons + Socials — single row */}
+          <div
+            ref={buttonsRef}
+            className="flex flex-wrap items-center justify-center lg:justify-start gap-3"
+          >
+            {/* PRIMARY */}
+            <Button
+              onClick={() => scrollToSection('projects')}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-7 py-5 text-sm font-semibold rounded-full transition-all hover:scale-105 shadow-lg shadow-primary/20"
+            >
+              <FolderOpen className="w-4 h-4 mr-2" />
+              View Work
+            </Button>
+
+            {/* SECONDARY */}
+            <Button
+              variant="outline"
+              asChild
+              className="border-cyan-500/50 text-cyan-600 dark:text-cyan-400 bg-cyan-500/5 hover:bg-cyan-500/15 hover:border-cyan-500/80 px-7 py-5 text-sm font-semibold rounded-full transition-all hover:scale-105 backdrop-blur-sm"
+            >
+              <a href={personalInfo.resume} target="_blank" rel="noopener noreferrer">
+                <Download className="w-4 h-4 mr-2" />
+                Resume
+              </a>
+            </Button>
+
+            {/* Divider */}
+            <span className="hidden lg:block w-px h-8 bg-border mx-1" />
+
+            {/* Social Icons — inline with buttons */}
+            <div ref={socialsRef} className="flex items-center gap-2">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  target={social.href.startsWith('mailto') ? undefined : '_blank'}
+                  rel="noopener noreferrer"
+                  className="p-2.5 bg-muted/30 border border-border rounded-xl hover:bg-muted/50 hover:border-primary/20 transition-all duration-300 hover:scale-110 hover:-translate-y-0.5"
+                >
+                  <social.Icon className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Text Content - Reveal via Particles */}
-        <div className="mb-6">
-          <ParticleName />
-        </div>
+        {/* Right Side: Profile & Floats */}
+        <div className="flex flex-col items-center justify-center relative order-1 lg:order-2">
+          <div ref={profileRef} className="relative">
+            {/* Profile Picture */}
+            <div className="relative group cursor-pointer z-10">
+              <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full blur opacity-25 group-hover:opacity-60 transition duration-1000 group-hover:duration-300"></div>
+              <div className="relative w-44 h-44 sm:w-56 sm:h-56 lg:w-72 lg:h-72 rounded-full overflow-hidden border-4 border-border ring-[6px] ring-background shadow-2xl">
+                <img
+                  src="/profile.webp"
+                  alt={personalInfo.name}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  onError={(e) => {
+                    e.currentTarget.src = 'https://placehold.co/600x400';
+                  }}
+                />
+              </div>
+            </div>
 
-        <span
-          ref={subtitleRef}
-          className="inline-flex items-center px-4 py-1.5 rounded-full border border-border bg-muted/30 text-muted-foreground text-sm sm:text-base font-medium backdrop-blur-sm mb-8 min-w-[200px] justify-center"
-        >
-          {displayedTitle}
-          <span
-            className={`ml-0.5 w-0.5 h-5 bg-cyan-400 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`}
-          />
-        </span>
-
-        <p
-          ref={descriptionRef}
-          className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed"
-        >
-          {personalInfo.description}
-        </p>
-
-        {/* Buttons */}
-        <div
-          ref={buttonsRef}
-          className="flex flex-wrap items-center justify-center gap-4 mb-12"
-        >
-          <Button
-            onClick={() => scrollToSection('projects')}
-            className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base font-semibold rounded-full transition-all hover:scale-105"
-          >
-            <Zap className="w-5 h-5 mr-2" />
-            View Work
-          </Button>
-
-          <Button
-            variant="outline"
-            asChild
-            className="bg-background/50 border-border text-foreground hover:bg-muted hover:text-foreground px-8 py-6 text-base font-semibold rounded-full transition-all hover:scale-105 backdrop-blur-sm"
-          >
-            <a href={personalInfo.resume} target="_blank" rel="noopener noreferrer">
-              <Download className="w-5 h-5 mr-2" />
-              Resume
-            </a>
-          </Button>
-
-          <Button
-            variant="outline"
-            onClick={() => scrollToSection('contact')}
-            className="bg-background/50 border-border text-foreground hover:bg-muted hover:text-foreground px-8 py-6 text-base font-semibold rounded-full transition-all hover:scale-105 backdrop-blur-sm"
-          >
-            <Mail className="w-5 h-5 mr-2" />
-            Contact
-          </Button>
-        </div>
-
-        {/* Social Links */}
-        <div
-          ref={socialsRef}
-          className="flex items-center justify-center gap-4"
-        >
-          {socialLinks.map((social, index) => (
-            <a
-              key={index}
-              href={social.href}
-              target={social.href.startsWith('mailto') ? undefined : '_blank'}
-              rel="noopener noreferrer"
-              className="p-3 bg-muted/30 border border-border rounded-xl hover:bg-muted/50 hover:border-primary/20 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
-            >
-              <social.Icon className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
-            </a>
-          ))}
+          </div>
         </div>
       </div>
     </section>
