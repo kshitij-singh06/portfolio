@@ -81,11 +81,11 @@ export default function About() {
         {/* Section Header */}
         <div ref={headingRef} className="mb-12 lg:mb-16 flex flex-col items-center text-center">
           <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground mb-4 sm:mb-6">
-            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0C6B84] to-violet-400 dark:from-cyan-400 dark:to-violet-400">
+            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0C6B84] to-sky-400 dark:from-cyan-400 dark:to-blue-400">
               Me
             </span>
           </h2>
-          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-[#0C6B84] to-violet-500 dark:from-cyan-500 dark:to-violet-500" />
+          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-[#0C6B84] to-sky-500 dark:from-cyan-500 dark:to-blue-500" />
         </div>
 
         <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12 md:gap-16 items-center">
@@ -94,7 +94,7 @@ export default function About() {
           <div className="md:pr-4">
             <div ref={paragraphsRef} className="space-y-6 md:space-y-7">
               <p className="text-base sm:text-lg md:text-[1.1rem] text-foreground/90 tracking-[0.01em] leading-[1.8] font-light">
-                I'm a <strong className="font-semibold text-foreground">Computer Science & Engineering</strong> student at Dayananda Sagar College of Engineering, Bengaluru, currently pursuing my undergraduate degree (2023–2027) with a specialization in <strong className="font-semibold text-violet-400">Data Science</strong>. I'm passionate about building things that bring together full-stack development, machine learning, and cybersecurity.
+                I'm a <strong className="font-semibold text-foreground">Computer Science & Engineering</strong> student at Dayananda Sagar College of Engineering, Bengaluru, currently pursuing my undergraduate degree (2023–2027) with a specialization in <strong className="font-semibold text-cyan-400">Data Science</strong>. I'm passionate about building things that bring together full-stack development, machine learning, and cybersecurity.
               </p>
               <p className="text-base sm:text-lg md:text-[1.1rem] text-foreground/80 tracking-[0.01em] leading-[1.8] font-light">
                 I like turning problems into clean, scalable solutions—whether that means architecting <strong className="font-semibold text-cyan-400">backend systemsand APIs </strong> , building polished and intuitive frontend interfaces, or working on <strong className="font-semibold text-cyan-400">machine learning models. </strong>I’m comfortable across the full stack and always eager to learn, build, and push my skills further.
@@ -106,7 +106,7 @@ export default function About() {
         <div ref={visualRef} className="relative w-full flex items-center justify-center">
           {/* Ambient Glowing Orbs */}
           <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-48 h-48 bg-cyan-500/20 rounded-full blur-[80px]" />
-          <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-48 h-48 bg-violet-500/20 rounded-full blur-[80px]" />
+          <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-48 h-48 bg-sky-500/20 rounded-full blur-[80px]" />
           
           {/* Code/Terminal Abstract Window */}
           <div className="relative w-full max-w-[500px] bg-card/40 dark:bg-white/[0.02] border border-border/50 rounded-2xl backdrop-blur-xl shadow-2xl overflow-hidden flex flex-col text-sm md:text-[0.95rem] leading-relaxed">
@@ -121,7 +121,7 @@ export default function About() {
             <div className="p-6 md:p-8 font-mono text-muted-foreground flex-1 flex items-center">
                <div className="w-full space-y-2.5">
                  <div className="flex">
-                   <span><span className="text-violet-400">const</span> <span className="text-foreground">developer</span> = {'{'}</span>
+                   <span><span className="text-cyan-400">const</span> <span className="text-foreground">developer</span> = {'{'}</span>
                  </div>
                  <div className="flex">
                    <span className="ml-4">name: <span className="text-green-400">'Kshitij Singh'</span>,</span>

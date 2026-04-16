@@ -80,9 +80,9 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto relative z-10">
         <div ref={headingRef} className="text-center mb-16">
           <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-6">
-            Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 dark:from-cyan-400 to-violet-600 dark:to-violet-400">Touch</span>
+            Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 dark:from-cyan-400 to-blue-600 dark:to-blue-400">Touch</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-600 dark:from-cyan-500 to-violet-600 dark:to-violet-500 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-600 dark:from-cyan-500 to-blue-600 dark:to-blue-500 mx-auto"></div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -137,7 +137,7 @@ export default function Contact() {
 
           <div ref={rightRef}>
             <Card className="bg-card/80 dark:bg-card border-border/70 dark:border-border backdrop-blur-sm overflow-hidden">
-              <div className="h-1 bg-gradient-to-r from-cyan-600 dark:from-cyan-500 to-violet-600 dark:to-violet-500"></div>
+              <div className="h-1 bg-gradient-to-r from-cyan-600 dark:from-cyan-500 to-blue-600 dark:to-blue-500"></div>
               <CardHeader><CardTitle className="text-xl font-bold text-foreground dark:text-foreground">Send a Message</CardTitle></CardHeader>
               <CardContent>
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">

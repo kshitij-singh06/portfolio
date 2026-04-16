@@ -21,7 +21,7 @@ type RGB = { r: number; g: number; b: number };
 // Draws the image onto a tiny canvas and averages all non-dark pixels.
 function sampleDominantColor(src: string): Promise<RGB> {
   return new Promise((resolve) => {
-    const fallback: RGB = { r: 99, g: 102, b: 241 }; // indigo default
+    const fallback: RGB = { r: 14, g: 165, b: 233 }; // sky default
     const img = new Image();
     img.crossOrigin = 'anonymous';
     img.onload = () => {

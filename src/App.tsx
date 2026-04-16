@@ -113,12 +113,12 @@ function App() {
                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                 />
                 <motion.div
-                  className="absolute inset-0 border-[3px] border-violet-500/80 rounded-xl"
+                  className="absolute inset-0 border-[3px] border-blue-500/80 rounded-xl"
                   animate={{ rotate: -360 }}
                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                   style={{ scale: 0.75 }}
                 />
-                <div className="absolute font-black text-xl tracking-tighter bg-gradient-to-br from-cyan-400 to-violet-500 bg-clip-text text-transparent">
+                <div className="absolute font-black text-xl tracking-tighter bg-gradient-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                   KS
                 </div>
               </motion.div>
@@ -146,7 +146,7 @@ function App() {
               {/* Progress Line */}
               <div className="w-48 h-1 mt-6 bg-secondary overflow-hidden rounded-full relative">
                 <motion.div
-                  className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-cyan-500 to-violet-500"
+                  className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-cyan-500 to-blue-500"
                   initial={{ width: "0%" }}
                   animate={{ width: "100%" }}
                   transition={{ duration: 1.8, ease: "circInOut" }}

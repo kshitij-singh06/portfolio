@@ -121,14 +121,14 @@ export default function Hero() {
       
       {/* Light mode: Clean background with subtle blue gradient */}
       <div className="absolute inset-0 dark:hidden bg-background/70 pointer-events-none" />
-      <div className="absolute inset-0 dark:hidden bg-gradient-to-br from-blue-50/40 via-transparent to-purple-50/40 pointer-events-none mix-blend-overlay" />
+      <div className="absolute inset-0 dark:hidden bg-gradient-to-br from-blue-50/40 via-transparent to-cyan-50/40 pointer-events-none mix-blend-overlay" />
 
       <div className="max-w-[1100px] mx-auto w-full relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         {/* Left Side: Text Content */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
           <h1
             ref={titleRef}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600 dark:from-cyan-400 dark:to-violet-500 mb-6 drop-shadow-sm leading-tight transition-all duration-700 ease-out"
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-600 dark:from-cyan-400 dark:to-blue-500 mb-6 drop-shadow-sm leading-[1.2] pb-2 transition-all duration-700 ease-out"
           >
             {personalInfo.name}
           </h1>
@@ -201,7 +201,7 @@ export default function Hero() {
           <div ref={profileRef} className="relative">
             {/* Profile Picture */}
             <div className="relative group cursor-pointer z-10">
-              <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full blur opacity-25 group-hover:opacity-60 transition duration-1000 group-hover:duration-300"></div>
+              <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur opacity-25 group-hover:opacity-60 transition duration-1000 group-hover:duration-300"></div>
               <div className="relative w-44 h-44 sm:w-56 sm:h-56 lg:w-72 lg:h-72 rounded-full overflow-hidden border-4 border-border ring-[6px] ring-background shadow-2xl">
                 <img
                   src="/profile.webp"

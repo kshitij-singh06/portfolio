@@ -58,7 +58,7 @@ export const projects = [
         github: 'https://github.com/kshitij-singh06/intelx-frontend',
         featured: true,
         liveDemo: 'https://intelx1337.vercel.app/',
-        image: '/intelx.png'
+        image: '/intelx.webp'
     },
     {
         title: 'NetScope – Deep Packet Inspection',
